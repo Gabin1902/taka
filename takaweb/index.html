@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>LambdaConcept Taka WebUSB</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.ico" />
+    </head>
+    <body>
+        <h1>LambdaConcept Taka</h1>
+        <input class="button" type="button" id="connectButton" value="Connexion" />
+        <input class="button" type="button" id="disconnectButton" value="Déconnexion" />
+        <br /><br />
+        <span id="takaVersion">Déconnecté</span>
+        <hr />
+
+        <div id="connected">
+            <h1>Fichier ARCH</h1>
+            <input class="button" type="button" id="archButton" value="Lire" />
+            <br /><br />
+            <h2>Assurance Santé</h2>
+            <span id="archContent0"></span>
+            <h2>Formation</h2>
+            <span id="archContent1"></span>
+            <h2>Crédit</h2>
+            <span id="archContent2"></span>
+            <h2>Retraite</h2>
+            <span id="archContent3"></span>
+            <hr />
+
+            <h1>Fichier ICAO</h1>
+            <input class="button" type="button" id="icaoButton" value="Lire" />
+            <br /><br />
+            <h2>DG1 (MRZ)</h2>
+            <span id="icaoContent0"></span>
+            <h2>DG2 (Encoded Face)</h2>
+            <canvas id="icaoContent1"></canvas>
+            <h2>DG3 (Encoded Finger(s))</h2>
+            <span id="icaoContent2" class="hexdump"></span>
+            <h2>DG4 Encoded Eye(s)</h2>
+            <span id="icaoContent3" class="hexdump"></span>
+            <h2>DG5 (Displayed Portrait)</h2>
+            <span id="icaoContent4" class="hexdump"></span>
+            <h2>DG6 (Reserved)</h2>
+            <span id="icaoContent5" class="hexdump"></span>
+            <h2>DG7 (Displayed Signature)</h2>
+            <span id="icaoContent6" class="hexdump"></span>
+            <h2>DG8 (Data Feature(s))</h2>
+            <span id="icaoContent7" class="hexdump"></span>
+            <h2>DG9 (Structure Feature(s))</h2>
+            <span id="icaoContent8" class="hexdump"></span>
+            <h2>DG10 (Substance Feature(s))</h2>
+            <span id="icaoContent9" class="hexdump"></span>
+            <h2>DG11 (Additional Personal Detail(s))</h2>
+            <span id="icaoContent10" class="hexdump"></span>
+            <h2>DG12 (Additional Document Detail(s))</h2>
+            <span id="icaoContent11" class="hexdump"></span>
+            <h2>DG13 (Optional Detail(s))</h2>
+            <span id="icaoContent12" class="hexdump"></span>
+            <h2>DG14 (Security Options)</h2>
+            <span id="icaoContent13" class="hexdump"></span>
+            <h2>DG15 (Active Authentication Public Key Info)</h2>
+            <span id="icaoContent14" class="hexdump"></span>
+            <h2>DG16 (Person(s) to Notify)</h2>
+            <span id="icaoContent15" class="hexdump"></span>
+            <hr />
+
+            <h1>Logs</h1>
+            <label for="logsDate">Date:</label>
+            <input type="date" id="logsDate" required pattern="\d{4}\d{2}\d{2}">
+            <input class="button" type="button" id="logsButton" value="Afficher" />
+            <br /><br />
+            <table>
+                <thead>
+                <tr>
+                    <!-- name,cardnum,birthdate,sex,fingermatch,eligible,time,<status>,<birthplace> -->
+                    <th>Nom Prénom</th>
+                    <th>Numéro de carte</th>
+                    <th>Date de naissance</th>
+                    <th>Sexe</th>
+                    <th>Authentification</th>
+                    <th>Eligibilité</th>
+                    <th>Date de passage</th>
+                    <th>Status</th>
+                    <th>Résidence</th>
+                </tr>
+                </thead>
+                <tbody id="logsTable">
+                </tbody>
+            </table>
+            <hr />
+        </div>
+
+        <script src="openjpeg.js"></script>
+        <script src="icaodecode.js"></script>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

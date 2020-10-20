@@ -1,0 +1,53 @@
+body {
+    // text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: .375rem .75rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 1.5;
+    border-radius: .25rem;
+    font-size: 1.2rem;
+}
+
+.centered {
+    text-align: center;
+}
+
+#connected, #disconnectButton {
+    display: none;
+}
+
+.hexdump {
+    font-family: monospace;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: white;
+}
