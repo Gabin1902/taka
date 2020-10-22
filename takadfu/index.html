@@ -8,31 +8,48 @@
         <script src="dfu-util.js"></script>
     </head>
     <body>
-        <p><span id="status"></span></p>
-
+        <p>
         <button id="connect" class="button">Connect</button>
+        </p>
 
         <p>
-        <fieldset>
+        <fieldset id="usbField" disabled="true">
             <legend>USB Device</legend>
             <span id="usbInfo" class="mono"></span>
         </fieldset>
-        <fieldset>
+        <fieldset id="dfuField" disabled="true">
             <legend>DFU Interface</legend>
             <span id="dfuInfo" class="mono"></span>
         </fieldset>
         </p>
 
+        <p><span id="status"></span></p>
+
         <form id="configForm">
-            <fieldset>
+            <fieldset id="configField" disabled="true">
                 <legend>Flash Firmware</legend>
-                <input type="file" id="firmwareFile" name="file" disabled="true"/>
-                <button id="download" disabled="true" class="button">Flash!</button>
+
+                <label for="type">Firmware type:</label>
+                <select id="firmwareType" name="type">
+                    <option value="standard" selected>Standard</option>
+                    <option value="custom">Custom</option>
+                </select>
+                <br />
+
+                <label for="list">Firmware file:</label>
+                <select id="firmwareList" name="list">
+                    <option value="taka.0.91.prod.bin" selected>Taka 0.91 Prod</option>
+                    <option value="taka.0.91.debug.bin">Taka 0.91 Debug</option>
+                    <option value="taka.factorytest.bin">Taka Factory Test</option>
+                </select>
+
+                <input type="file" id="firmwareFile" name="file"/>
+                <br />
+
+                <button id="download" class="button">Flash!</button>
+
                 <div class="log" id="downloadLog"></div>
             </fieldset>
         </form>
-
-        <div id="displayOn">
-        </div>
     </body>
 </html>

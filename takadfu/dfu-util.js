@@ -176,15 +176,21 @@ var device = null;
         let connectButton = document.querySelector("#connect");
         let downloadButton = document.querySelector("#download");
         let statusDisplay = document.querySelector("#status");
-        let infoDisplay = document.querySelector("#usbInfo");
+
+        let usbDisplay = document.querySelector("#usbInfo");
+        let usbField = document.querySelector("#usbField");
+
         let dfuDisplay = document.querySelector("#dfuInfo");
-        let displayOn = document.querySelector("#displayOn");
+        let dfuField = document.querySelector("#dfuField");
 
         let configForm = document.querySelector("#configForm");
+        let configField = document.querySelector("#configField");
 
         let transferSize = 1024;
 
         let firmwareFileField = document.querySelector("#firmwareFile");
+        let firmwareType = document.querySelector("#firmwareType");
+        let firmwareList = document.querySelector("#firmwareList");
         let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
@@ -195,7 +201,6 @@ var device = null;
         function onDisconnect(reason, success) {
             if (reason) {
                 statusDisplay.textContent = reason;
-                console.log(success);
                 if (success) {
                     statusDisplay.className = "success";
                 } else {
@@ -204,11 +209,11 @@ var device = null;
             }
 
             connectButton.textContent = "Connect";
-            infoDisplay.textContent = "";
+            usbDisplay.textContent = "";
             dfuDisplay.textContent = "";
-            displayOn.style.display = "none";
-            downloadButton.disabled = true;
-            firmwareFileField.disabled = true;
+            usbField.disabled = true;
+            dfuField.disabled = true;
+            configField.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
@@ -292,7 +297,7 @@ var device = null;
             statusDisplay.textContent = '';
             statusDisplay.className = "";
             connectButton.textContent = 'Disconnect';
-            infoDisplay.textContent = (
+            usbDisplay.textContent = (
                 "Name: " + device.device_.productName + "\n" +
                 "MFG: " + device.device_.manufacturerName + "\n" +
                 "Serial: " + device.device_.serialNumber + "\n"
@@ -300,17 +305,16 @@ var device = null;
 
             // Display basic dfu-util style info
             dfuDisplay.textContent = formatDFUSummary(device) + "\n" + memorySummary;
-            displayOn.style.display = "block";
+            usbField.disabled = false;
+            dfuField.disabled = false;
 
             // Update buttons based on capabilities
             if (device.settings.alternate.interfaceProtocol == 0x01) {
                 // Runtime
-                downloadButton.disabled = true;
-                firmwareFileField.disabled = true;
+                configField.disabled = true;
             } else {
                 // DFU
-                downloadButton.disabled = false;
-                firmwareFileField.disabled = false;
+                configField.disabled = false;
             }
 
             if (device.memoryInfo) {
@@ -363,6 +367,29 @@ var device = null;
             }
         });
 
+        firmwareType.addEventListener("change", function() {
+            if (firmwareType.value == "custom") {
+                firmwareFileField.style.display = "inline";
+                firmwareList.style.display = "none";
+            } else {
+                firmwareFileField.style.display = "none";
+                firmwareList.style.display = "inline";
+            }
+        });
+
+        firmwareList.addEventListener("change", function() {
+            firmwareFile = null;
+            let oReq = new XMLHttpRequest();
+            oReq.open("GET", "firmwares/" + firmwareList.value, true);
+            oReq.responseType = "arraybuffer";
+            oReq.onload = function (oEvent) {
+                if (this.status == 200) {
+                    firmwareFile = oReq.response;
+                }
+            };
+            oReq.send();
+        });
+
         firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
             if (firmwareFileField.files.length > 0) {
@@ -380,6 +407,12 @@ var device = null;
             event.stopPropagation();
             if (!configForm.checkValidity()) {
                 configForm.reportValidity();
+                return false;
+            }
+
+            if (firmwareFile == null) {
+                statusDisplay.textContent = "Empty file";
+                statusDisplay.className = "error";
                 return false;
             }
 
@@ -427,6 +460,6 @@ var device = null;
             statusDisplay.className = "error";
             connectButton.disabled = true;
         }
-        displayOn.style.display = "none";
+        firmwareFileField.style.display = "none";
     });
 })();

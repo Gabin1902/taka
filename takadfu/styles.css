@@ -60,9 +60,10 @@ body {
     white-space: nowrap;
 }
 
-.button[disabled] {
+fieldset[disabled] {
     cursor: default;
     opacity: .5;
+    background-color: #f0f0f0;
 }
 
 .button:hover {
@@ -70,7 +71,7 @@ body {
     outline: 0;
 }
 
-textarea, select, input[type] {
+select, input[type] {
     color: #4a4a4a;
     padding: .55rem .75rem;
     /* The 6px vertically centers text on FF, ignored by Webkit */
@@ -84,8 +85,14 @@ legend, fieldset {
     display: block;
     margin-bottom: .5rem;
 }
+
 legend {
     font-weight: bold;
+}
+
+label {
+    width: 16%;
+    display: inline-block;
 }
 
 .mono {
