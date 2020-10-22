@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebUSB DFU</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script src="dfu.js"></script>
+        <script src="dfuse.js"></script>
+        <script src="dfu-util.js"></script>
+    </head>
+    <body>
+        <p><span id="status"></span></p>
+
+        <button id="connect" class="button">Connect</button>
+
+        <p>
+        <fieldset>
+            <legend>USB Device</legend>
+            <span id="usbInfo" class="mono"></span>
+        </fieldset>
+        <fieldset>
+            <legend>DFU Interface</legend>
+            <span id="dfuInfo" class="mono"></span>
+        </fieldset>
+        </p>
+
+        <form id="configForm">
+            <fieldset>
+                <legend>Flash Firmware</legend>
+                <input type="file" id="firmwareFile" name="file" disabled="true"/>
+                <button id="download" disabled="true" class="button">Flash!</button>
+                <div class="log" id="downloadLog"></div>
+            </fieldset>
+        </form>
+
+        <div id="displayOn">
+        </div>
+    </body>
+</html>
