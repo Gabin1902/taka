@@ -1,5 +1,6 @@
 body {
-    // text-align: center;
+    max-width: 1280px;
+    margin: auto;
 }
 
 h1 {
@@ -38,13 +39,6 @@ table th {
     color: white;
 }
 
-
-body {
-    max-width: 50em;
-    margin: auto;
-}
-
-
 .button {
     background-color: #343131;
     border: none;
@@ -70,7 +64,7 @@ body {
     outline: 0;
 }
 
-textarea, select, input[type] {
+textarea, select, input[type="file"] {
     color: #4a4a4a;
     padding: .55rem .75rem;
     /* The 6px vertically centers text on FF, ignored by Webkit */

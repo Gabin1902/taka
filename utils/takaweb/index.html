@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>LambdaConcept Taka WebUSB</title>
+        <title>Taka WebUSB</title>
         <link rel="stylesheet" href="styles.css" />
         <link rel="icon" href="favicon.ico" />
     </head>
     <body>
-        <h1>LambdaConcept Taka</h1>
+        <h1>Taka WebUSB</h1>
         <input class="button" type="button" id="connectButton" value="Connexion" />
         <input class="button" type="button" id="disconnectButton" value="Déconnexion" />
         <br /><br />
@@ -19,21 +19,21 @@
             <input class="button" type="button" id="archButton" value="Lire" />
             <br /><br />
             <h2>Assurance Santé</h2>
-            <span id="archContent0"></span>
+            <span id="archContent0" class="mono"></span>
             <h2>Formation</h2>
-            <span id="archContent1"></span>
+            <span id="archContent1" class="mono"></span>
             <h2>Crédit</h2>
-            <span id="archContent2"></span>
+            <span id="archContent2" class="mono"></span>
             <h2>Retraite</h2>
-            <span id="archContent3"></span>
+            <span id="archContent3" class="mono"></span>
             <hr />
 
             <h1>Fichier ICAO</h1>
             <input class="button" type="button" id="icaoButton" value="Lire" />
             <br /><br />
             <h2>DG1 (MRZ)</h2>
-            <span id="icaoContent0"></span>
-            <h2>DG2 (Encoded Face)</h2>
+            <span id="icaoContent0" class="mono"></span>
+            <h2>DG2 (Encoded Face, zoom x2)</h2>
             <canvas id="icaoContent1"></canvas>
             <h2>DG3 (Encoded Finger(s))</h2>
             <span id="icaoContent2" class="hexdump"></span>
@@ -64,6 +64,14 @@
             <h2>DG16 (Person(s) to Notify)</h2>
             <span id="icaoContent15" class="hexdump"></span>
             <hr />
+
+            <h1>Camera</h1>
+            <input class="button" type="button" id="camButton" value="Lire" />
+            <br /><br />
+            <h2>Frame (raw)</h2>
+            <canvas id="camFrame"></canvas>
+            <h2>Frame (morph, zoom x2)</h2>
+            <canvas id="camMorph"></canvas>
 
             <h1>Logs</h1>
             <label for="logsDate">Date:</label>

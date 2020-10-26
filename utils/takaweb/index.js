@@ -10,6 +10,14 @@ const USB_CMD_GETICAO = 0x02;
     /* Followed by 1 byte for DG number 0-15 */
 const USB_CMD_GETLOGS = 0x03;
     /* Followed by 8 ascii bytes for YYYYMMDD */
+const USB_CMD_GETFRAME_RAW = 0x04;
+const USB_CMD_GETFRAME_MORPH = 0x05;
+
+const FRAME_SW = 640;
+const FRAME_SH = 380;
+
+const FRAME_DW = 348;
+const FRAME_DH = 348;
 
 const LOGS_FIELDS_NB = 9;
 
@@ -46,6 +54,7 @@ function hide() {
 function reset() {
   archContentDrop();
   icaoContentDrop();
+  camContentDrop();
   logsTableDrop();
   takaVersionDrop();
 
@@ -103,6 +112,23 @@ icaoButton.onclick = async () => {
   getIcao(0); /* Queue the read for the first ICAO DG file */
 };
 
+const getCamFrame = async (num) => {
+  _cmd = USB_CMD_GETFRAME_RAW;
+  const data = new Uint8Array([_cmd]);
+  await _device.transferOut(EP_OUT, data);
+};
+
+const getCamMorph = async (num) => {
+  _cmd = USB_CMD_GETFRAME_MORPH;
+  const data = new Uint8Array([_cmd]);
+  await _device.transferOut(EP_OUT, data);
+};
+
+camButton.onclick = async () => {
+  camContentDrop();
+  getCamFrame();
+};
+
 logsButton.onclick = async () => {
   logsTableDrop();
   _cmd = USB_CMD_GETLOGS;
@@ -148,6 +174,17 @@ const listen = async () => {
     logsTableAppend(content);
     if (last) {
       logsTableEnd();
+    }
+  } else if (_cmd == USB_CMD_GETFRAME_RAW) {
+    camContentAppend(_cmd, result.data);
+    if (last) {
+      camContentEnd(_cmd);
+      getCamMorph(); /* Queue the morph frame */
+    }
+  } else if (_cmd == USB_CMD_GETFRAME_MORPH) {
+    camContentAppend(_cmd, result.data);
+    if (last) {
+      camContentEnd(_cmd);
     }
   }
 
@@ -298,8 +335,8 @@ function icaoShowFace() {
 
   var rgbImage = openjpeg(face, "jp2");
   var canvas = icaoContent1;
-  canvas.width = rgbImage.width;
-  canvas.height = rgbImage.height;
+  canvas.width = rgbImage.width * 2;
+  canvas.height = rgbImage.height * 2;
 
   var pixelsPerChannel = rgbImage.width * rgbImage.height;
   var ctx = canvas.getContext("2d");
@@ -317,7 +354,75 @@ function icaoShowFace() {
     j += 1;
   }
 
-  ctx.putImageData(rgbaImage, 0, 0);
+  // ctx.putImageData(rgbaImage, 0, 0);
+  ctx.imageSmoothingEnabled = false;
+  ctx.mozImageSmoothingEnabled = false;
+  ctx.webkitImageSmoothingEnabled = false;
+  ctx.msImageSmoothingEnabled = false;
+  createImageBitmap(rgbaImage).then(img =>
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+  );
+}
+
+let _camFrame = new Uint8Array();
+let _camMorph = new Uint8Array();
+
+function camContentDrop() {
+  var ctx;
+  _camFrame = new Uint8Array();
+  _camMorph = new Uint8Array();
+
+  ctx = camFrame.getContext('2d');
+  ctx.clearRect(0, 0, camFrame.width, camFrame.height);
+  ctx = camMorph.getContext('2d');
+  ctx.clearRect(0, 0, camMorph.width, camMorph.height);
+};
+
+function camContentAppend(type, data) {
+  if (type == USB_CMD_GETFRAME_RAW) {
+    _camFrame = bufCat(_camFrame, data.buffer);
+  } else if (type == USB_CMD_GETFRAME_MORPH) {
+    _camMorph = bufCat(_camMorph, data.buffer);
+  }
+};
+
+function camContentEnd(type) {
+  if (type == USB_CMD_GETFRAME_RAW) {
+    var canvas = camFrame;
+    canvas.width = FRAME_SW;
+    canvas.height = FRAME_SH;
+    var data = new Uint8Array(_camFrame);
+    var ctx = canvas.getContext("2d");
+    var rgbaImage = ctx.createImageData(FRAME_SW, FRAME_SH);
+  } else if (type == USB_CMD_GETFRAME_MORPH) {
+    var canvas = camMorph;
+    canvas.width = FRAME_DW * 2;
+    canvas.height = FRAME_DH * 2;
+    var data = new Uint8Array(_camMorph);
+    var ctx = canvas.getContext("2d");
+    var rgbaImage = ctx.createImageData(FRAME_DW, FRAME_DW);
+  }
+
+  var i = 0, j = 0;
+  while (i < rgbaImage.data.length && j < data.byteLength) {
+    rgbaImage.data[i]   = data[j];      /* R */
+    rgbaImage.data[i+1] = data[j];      /* G */
+    rgbaImage.data[i+2] = data[j];      /* B */
+    rgbaImage.data[i+3] = 255;          /* A */
+
+    /* Next pixel */
+    i += 4;
+    j += 1;
+  }
+
+  // ctx.putImageData(rgbaImage, 0, 0);
+  ctx.imageSmoothingEnabled = false;
+  ctx.mozImageSmoothingEnabled = false;
+  ctx.webkitImageSmoothingEnabled = false;
+  ctx.msImageSmoothingEnabled = false;
+  createImageBitmap(rgbaImage).then(img =>
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+  );
 }
 
 window.onload = function(e) {

@@ -1,5 +1,6 @@
 body {
-    // text-align: center;
+    max-width: 1280px;
+    margin: auto;
 }
 
 h1 {
@@ -37,13 +38,6 @@ table th {
     background-color: black;
     color: white;
 }
-
-
-body {
-    max-width: 50em;
-    margin: auto;
-}
-
 
 .button {
     background-color: #343131;

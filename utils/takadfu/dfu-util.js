@@ -461,5 +461,6 @@ var device = null;
             connectButton.disabled = true;
         }
         firmwareFileField.style.display = "none";
+        firmwareList.dispatchEvent(new Event("change"));
     });
 })();
