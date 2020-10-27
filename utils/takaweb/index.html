@@ -72,6 +72,20 @@
             <canvas id="camFrame"></canvas>
             <h2>Frame (morph, zoom x2)</h2>
             <canvas id="camMorph"></canvas>
+            <table class="tableSmall">
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Angle</th>
+                    <th>Quality</th>
+                </tr>
+                </thead>
+                <tbody id="camMinutiaesTable">
+                </tbody>
+            </table>
+            <hr />
 
             <h1>Logs</h1>
             <label for="logsDate">Date:</label>
@@ -101,6 +115,7 @@
 
         <script src="openjpeg.js"></script>
         <script src="icaodecode.js"></script>
+        <script src="mindecode.js"></script>
         <script src="index.js" type="module"></script>
     </body>
 </html>

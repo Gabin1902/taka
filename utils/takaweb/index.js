@@ -12,6 +12,7 @@ const USB_CMD_GETLOGS = 0x03;
     /* Followed by 8 ascii bytes for YYYYMMDD */
 const USB_CMD_GETFRAME_RAW = 0x04;
 const USB_CMD_GETFRAME_MORPH = 0x05;
+const USB_CMD_GETMINUTIAES_FMR = 0x06;
 
 const FRAME_SW = 640;
 const FRAME_SH = 380;
@@ -124,6 +125,12 @@ const getCamMorph = async (num) => {
   await _device.transferOut(EP_OUT, data);
 };
 
+const getCamMinutiaes = async (num) => {
+  _cmd = USB_CMD_GETMINUTIAES_FMR;
+  const data = new Uint8Array([_cmd]);
+  await _device.transferOut(EP_OUT, data);
+};
+
 camButton.onclick = async () => {
   camContentDrop();
   getCamFrame();
@@ -179,9 +186,15 @@ const listen = async () => {
     camContentAppend(_cmd, result.data);
     if (last) {
       camContentEnd(_cmd);
-      getCamMorph(); /* Queue the morph frame */
+      getCamMorph(); /* Queue the read for morph frame */
     }
   } else if (_cmd == USB_CMD_GETFRAME_MORPH) {
+    camContentAppend(_cmd, result.data);
+    if (last) {
+      camContentEnd(_cmd);
+      getCamMinutiaes(); /* Queue the read for minutiaes */
+    }
+  } else if (_cmd == USB_CMD_GETMINUTIAES_FMR) {
     camContentAppend(_cmd, result.data);
     if (last) {
       camContentEnd(_cmd);
@@ -366,11 +379,14 @@ function icaoShowFace() {
 
 let _camFrame = new Uint8Array();
 let _camMorph = new Uint8Array();
+let _camMinutiaes = new Uint8Array();
 
 function camContentDrop() {
   var ctx;
   _camFrame = new Uint8Array();
   _camMorph = new Uint8Array();
+  _camMinutiaes = new Uint8Array();
+  camMinutiaesTable.innerHTML = "";
 
   ctx = camFrame.getContext('2d');
   ctx.clearRect(0, 0, camFrame.width, camFrame.height);
@@ -383,25 +399,32 @@ function camContentAppend(type, data) {
     _camFrame = bufCat(_camFrame, data.buffer);
   } else if (type == USB_CMD_GETFRAME_MORPH) {
     _camMorph = bufCat(_camMorph, data.buffer);
+  } else if (type == USB_CMD_GETMINUTIAES_FMR) {
+    _camMinutiaes = bufCat(_camMinutiaes, data.buffer);
   }
 };
 
-function camContentEnd(type) {
-  if (type == USB_CMD_GETFRAME_RAW) {
-    var canvas = camFrame;
-    canvas.width = FRAME_SW;
-    canvas.height = FRAME_SH;
-    var data = new Uint8Array(_camFrame);
-    var ctx = canvas.getContext("2d");
-    var rgbaImage = ctx.createImageData(FRAME_SW, FRAME_SH);
-  } else if (type == USB_CMD_GETFRAME_MORPH) {
-    var canvas = camMorph;
-    canvas.width = FRAME_DW * 2;
-    canvas.height = FRAME_DH * 2;
-    var data = new Uint8Array(_camMorph);
-    var ctx = canvas.getContext("2d");
-    var rgbaImage = ctx.createImageData(FRAME_DW, FRAME_DW);
+function camMinutiaesFillTable(pts) {
+  pts.forEach(p => {
+    let row = camMinutiaesTable.insertRow(-1);
+
+    row.insertCell(-1).innerHTML = p.type;
+    row.insertCell(-1).innerHTML = p.x;
+    row.insertCell(-1).innerHTML = p.y;
+    row.insertCell(-1).innerHTML = p.angle;
+    row.insertCell(-1).innerHTML = p.quality;
+  })
+
+  if (camMinutiaesTable.rows.length == 0) {
+    camMinutiaesTable.innerText = "<no minutiaes>";
   }
+}
+
+function camCanvasDrawImage(canvas, data, w, h, zoom) {
+  canvas.width = w * zoom;
+  canvas.height = h * zoom;
+  var ctx = canvas.getContext("2d");
+  var rgbaImage = ctx.createImageData(w, h);
 
   var i = 0, j = 0;
   while (i < rgbaImage.data.length && j < data.byteLength) {
@@ -423,6 +446,53 @@ function camContentEnd(type) {
   createImageBitmap(rgbaImage).then(img =>
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
   );
+}
+
+function camCanvasDrawMinutiaes(canvas, pts, zoom) {
+  var ctx = canvas.getContext("2d");
+  const qmin = 40;
+  ctx.lineWidth = zoom;
+
+  pts.forEach(p => {
+    let alpha = p.angle * (Math.PI / 180.0);
+    let dx = Math.cos(alpha) * 10;
+    let dy = -Math.sin(alpha) * 10;
+
+    /* blue -> green scale */
+    let q = (p.quality - qmin) * 100 / (100 - qmin);
+    let green = Math.floor(q * 2.55);
+    green = ("00" + green.toString(16)).substr(-2);
+    let blue = Math.floor((100-q) * 2.55);
+    blue = ("00" + blue.toString(16)).substr(-2);
+    let color = "#00" + green + blue;
+
+    ctx.fillStyle = color;
+    ctx.fillRect((p.x-1)*zoom, (p.y-1)*zoom, 3*zoom, 3*zoom);
+
+    ctx.beginPath();
+    ctx.moveTo(p.x * zoom, p.y * zoom);
+    ctx.lineTo((p.x + dx) * zoom, (p.y + dy) * zoom);
+    ctx.closePath();
+    ctx.strokeStyle = color;
+    ctx.stroke();
+  })
+}
+
+function camContentEnd(type) {
+  if (type == USB_CMD_GETFRAME_RAW) {
+    var data = new Uint8Array(_camFrame);
+    camCanvasDrawImage(camFrame, data, FRAME_SW, FRAME_SH, 1);
+
+  } else if (type == USB_CMD_GETFRAME_MORPH) {
+    var data = new Uint8Array(_camMorph);
+    camCanvasDrawImage(camMorph, data, FRAME_DW, FRAME_DH, 2);
+
+  } else if (type == USB_CMD_GETMINUTIAES_FMR) {
+    var data = new Uint8Array(_camMinutiaes);
+    var pts = min_record_decode(data);
+    camMinutiaesFillTable(pts);
+    camCanvasDrawMinutiaes(camMorph, pts, 2);
+  }
 }
 
 window.onload = function(e) {
