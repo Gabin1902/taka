@@ -191,7 +191,6 @@ var device = null;
         let firmwareFileField = document.querySelector("#firmwareFile");
         let firmwareType = document.querySelector("#firmwareType");
         let firmwareList = document.querySelector("#firmwareList");
-        let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
         let uploadLog = document.querySelector("#uploadLog");
@@ -377,30 +376,42 @@ var device = null;
             }
         });
 
-        firmwareList.addEventListener("change", function() {
-            firmwareFile = null;
-            let oReq = new XMLHttpRequest();
-            oReq.open("GET", "firmwares/" + firmwareList.value, true);
-            oReq.responseType = "arraybuffer";
-            oReq.onload = function (oEvent) {
-                if (this.status == 200) {
-                    firmwareFile = oReq.response;
-                }
-            };
-            oReq.send();
-        });
-
-        firmwareFileField.addEventListener("change", function() {
-            firmwareFile = null;
-            if (firmwareFileField.files.length > 0) {
-                let file = firmwareFileField.files[0];
-                let reader = new FileReader();
-                reader.onload = function() {
-                    firmwareFile = reader.result;
+        function fetchFirmwareFromList() {
+            return new Promise((resolve, reject) => {
+                let oReq = new XMLHttpRequest();
+                oReq.open("GET", "firmwares/" + firmwareList.value, true);
+                oReq.responseType = "arraybuffer";
+                oReq.onload = function (oEvent) {
+                    if (this.status == 200) {
+                        resolve(oReq.response);
+                    } else {
+                        reject(this.status);
+                    }
                 };
-                reader.readAsArrayBuffer(file);
-            }
-        });
+                oReq.onerror = function (oEvent) {
+                    reject(oEvent);
+                };
+                oReq.send();
+            });
+        }
+
+        function fetchFirmwareFromFile() {
+            return new Promise((resolve, reject) => {
+                if (firmwareFileField.files.length > 0) {
+                    let file = firmwareFileField.files[0];
+                    let reader = new FileReader();
+                    reader.onload = function() {
+                        resolve(reader.result);
+                    };
+                    reader.onerror = function(e) {
+                      reject(e);
+                    };
+                    reader.readAsArrayBuffer(file);
+                } else {
+                    reject("no file");
+                }
+            });
+        }
 
         downloadButton.addEventListener('click', async function(event) {
             event.preventDefault();
@@ -410,12 +421,22 @@ var device = null;
                 return false;
             }
 
-            if (firmwareFile == null) {
+            // get the requested firmware file
+            let firmwareFile = null;
+            try {
+                if (firmwareType.value == "custom") {
+                    firmwareFile = await fetchFirmwareFromFile();
+                } else {
+                    firmwareFile = await fetchFirmwareFromList();
+                }
+            } catch (error) {
+                console.log(error);
                 statusDisplay.textContent = "Empty file";
                 statusDisplay.className = "error";
                 return false;
             }
 
+            // flash it
             if (device && firmwareFile != null) {
                 setLogContext(downloadLog);
                 clearLog(downloadLog);
