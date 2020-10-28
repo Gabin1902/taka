@@ -3,10 +3,10 @@ Install Udev rules
 
 Write the rule in:
 
-/etc/udev/rules.d/52-taka.rules
--------------------------------
-ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="ffff", ATTRS{idProduct}=="1234", MODE="0664", GROUP="plugdev"
--------------------------------
+/etc/udev/rules.d/45-stdfu-permissions.rules
+--------------------------------------------
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE="0664", GROUP="plugdev"
+--------------------------------------------
 
 Reload the rules:
 
