@@ -387,6 +387,7 @@ function camContentDrop() {
   _camMorph = new Uint8Array();
   _camMinutiaes = new Uint8Array();
   camMinutiaesTable.innerHTML = "";
+  camMinutiaesHex.innerText = "";
 
   ctx = camFrame.getContext('2d');
   ctx.clearRect(0, 0, camFrame.width, camFrame.height);
@@ -403,6 +404,16 @@ function camContentAppend(type, data) {
     _camMinutiaes = bufCat(_camMinutiaes, data.buffer);
   }
 };
+
+function camMinutiaesShowAsHex() {
+  var length = _camMinutiaes.byteLength;
+  if (length == 0) {
+    var content = "<empty>";
+  } else {
+    var content = buf2hex(_camMinutiaes);
+  }
+  camMinutiaesHex.innerText = content;
+}
 
 function camMinutiaesFillTable(pts) {
   pts.forEach(p => {
@@ -491,6 +502,7 @@ function camContentEnd(type) {
     var data = new Uint8Array(_camMinutiaes);
     var pts = min_record_decode(data);
     camMinutiaesFillTable(pts);
+    camMinutiaesShowAsHex();
     camCanvasDrawMinutiaes(camMorph, pts, 2);
   }
 }
