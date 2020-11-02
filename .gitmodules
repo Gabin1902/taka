@@ -7,3 +7,6 @@
 [submodule "libcxx"]
 	path = libcxx
 	url = https://bitbucket.org/acassis/libcxx
+[submodule "utils/wsqconvert"]
+	path = utils/wsqconvert
+	url = https://github.com/pawelmoll/wsq
