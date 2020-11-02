@@ -393,6 +393,8 @@ function camContentDrop() {
   ctx.clearRect(0, 0, camFrame.width, camFrame.height);
   ctx = camMorph.getContext('2d');
   ctx.clearRect(0, 0, camMorph.width, camMorph.height);
+  ctx = camCombo.getContext('2d');
+  ctx.clearRect(0, 0, camCombo.width, camCombo.height);
 };
 
 function camContentAppend(type, data) {
@@ -496,14 +498,15 @@ function camContentEnd(type) {
 
   } else if (type == USB_CMD_GETFRAME_MORPH) {
     var data = new Uint8Array(_camMorph);
-    camCanvasDrawImage(camMorph, data, FRAME_DW, FRAME_DH, 2);
+    camCanvasDrawImage(camMorph, data, FRAME_DW, FRAME_DH, 1);
+    camCanvasDrawImage(camCombo, data, FRAME_DW, FRAME_DH, 2);
 
   } else if (type == USB_CMD_GETMINUTIAES_FMR) {
     var data = new Uint8Array(_camMinutiaes);
     var pts = min_record_decode(data);
     camMinutiaesFillTable(pts);
     camMinutiaesShowAsHex();
-    camCanvasDrawMinutiaes(camMorph, pts, 2);
+    camCanvasDrawMinutiaes(camCombo, pts, 2);
   }
 }
 
