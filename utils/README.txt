@@ -9,3 +9,11 @@ cd ..
 convert samples/remote/0638743217_2.png samples/remote/0638743217_2.pgm
 
 ================================================================================
+Compact format decoding
+=======================
+
+cd compact
+make decode
+cd ..
+
+./compact/decode samples/remote/0638743217_2 > samples/remote/0638743217_2.txt
