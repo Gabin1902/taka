@@ -42,3 +42,10 @@ Plot images and minutiaes
 =========================
 
 python plot.py ../samples/remote/0638743217_2
+
+Test influence of number of minutiaes
+=====================================
+
+Warning: dangerous! Use a know good compact to avoid locking the card!
+
+sudo ./submit ../samples/agbokou/5130159536_2.myok ../samples/agbokou/5130159536_2.ist

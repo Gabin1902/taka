@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
 
     int minquality;
     int mincount;
+    int maxcount = 35;
     int score;
 
     if (argc < 5) {
@@ -73,7 +74,8 @@ int main(int argc, char *argv[])
 
     /* Discard bad quality points */
 
-    ret = pts_quality_threshold(pts, &pts_count, minquality, mincount, &score);
+    ret = pts_quality_threshold(pts, &pts_count, minquality,
+                                mincount, maxcount, &score);
     if (ret != OK)
       {
         printf("ERROR not enough quality points\n");

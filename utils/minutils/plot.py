@@ -103,11 +103,14 @@ def show_ist_file(ist, color):
 
 def show_compact_file(compact, color):
     print(compact)
-    file = open(compact, "rb")
-    data = file.read()
-    file.close()
-    show_compact(data, color)
-    print()
+    try:
+        file = open(compact, "rb")
+        data = file.read()
+        file.close()
+        show_compact(data, color)
+        print()
+    except FileNotFoundError:
+        print("FileNotFoundError")
 
 if __name__ == "__main__":
 

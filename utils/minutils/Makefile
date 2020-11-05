@@ -1,6 +1,7 @@
-TARGETS = extract compact dumpist dumpcompact
+TARGETS = extract compact dumpist dumpcompact submit
 CFLAGS = -Wall -Ofast
 INC = -Isrc -Isrc/fingerjet -Isrc/fingerjet/algorithm
+LIBS = -lnfc
 
 all: $(TARGETS)
 
@@ -15,6 +16,9 @@ dumpist: dumpist.c
 
 dumpcompact: dumpcompact.c
 	$(CC) $(CFLAGS) $(INC) src/*.c $@.c -o $@
+
+submit: submit.c
+	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
 
 clean:
 	rm -f $(TARGETS)
