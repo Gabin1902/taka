@@ -72,11 +72,11 @@ def show_point(x, y, angle, ptype, color="red"):
     dx = int(math.cos(alpha) * 10)
     dy = -int(math.sin(alpha) * 10)
     plt.plot([x, x + dx], [y, y + dy], color, linewidth=3)
-    types = ["*", "^", "x"]
+    types = ["*", "^", "x", "."]
     plt.scatter(x=x, y=y, c=color, s=100, marker=types[ptype])
 
 def show_compact(data, color="red"):
-    scale = 2
+    scale = 1.968503937
     for i in range(len(data) // 3):
         x, y, tmp = data[3*i:3*(i+1)]
         ptype = tmp >> 6
