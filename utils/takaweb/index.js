@@ -17,8 +17,8 @@ const USB_CMD_GETMINUTIAES_FMR = 0x06;
 const FRAME_SW = 640;
 const FRAME_SH = 380;
 
-const FRAME_DW = 348;
-const FRAME_DH = 348;
+const FRAME_DW = 314;
+const FRAME_DH = 322;
 
 const LOGS_FIELDS_NB = 9;
 

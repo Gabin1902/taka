@@ -22,8 +22,8 @@
 
 # define CAM_DUMP
 # define CAM_MORPH
-# define CAM_WIDTH  348
-# define CAM_HEIGHT 348
+# define CAM_WIDTH  314
+# define CAM_HEIGHT 322
 
 #endif
 
