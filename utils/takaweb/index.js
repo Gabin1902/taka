@@ -386,8 +386,6 @@ function camContentDrop() {
   _camFrame = new Uint8Array();
   _camMorph = new Uint8Array();
   _camMinutiaes = new Uint8Array();
-  camMinutiaesTable.innerHTML = "";
-  camMinutiaesHex.innerText = "";
 
   ctx = camFrame.getContext('2d');
   ctx.clearRect(0, 0, camFrame.width, camFrame.height);
@@ -395,6 +393,8 @@ function camContentDrop() {
   ctx.clearRect(0, 0, camMorph.width, camMorph.height);
   ctx = camCombo.getContext('2d');
   ctx.clearRect(0, 0, camCombo.width, camCombo.height);
+
+  camMinutiaesDrop();
 };
 
 function camContentAppend(type, data) {
@@ -406,6 +406,12 @@ function camContentAppend(type, data) {
     _camMinutiaes = bufCat(_camMinutiaes, data.buffer);
   }
 };
+
+function camMinutiaesDrop() {
+  camMinutiaesTable.innerHTML = "";
+  camMinutiaesKDE.innerHTML = "";
+  camMinutiaesHex.innerText = "";
+}
 
 function camMinutiaesShowAsHex() {
   var length = _camMinutiaes.byteLength;
@@ -431,6 +437,28 @@ function camMinutiaesFillTable(pts) {
   if (camMinutiaesTable.rows.length == 0) {
     camMinutiaesTable.innerText = "<no minutiaes>";
   }
+}
+
+function camMinutiaesFillKDE(pts) {
+  var quals = pts.map(p => p.quality);
+  if (quals.length > 0) {
+    kdeShow("#camMinutiaesKDE", quals);
+  }
+}
+
+camMinutiaesHex.onchange = function(e) {
+  camMinutiaesDrop();
+
+  var data = new Uint8Array(e.target.value
+                            .replace(/ /g, "")
+                            .match(/.{2}/g)
+                            .map(byte => parseInt(byte, 16)));
+  var pts = min_record_decode(data);
+
+  camMinutiaesFillTable(pts);
+  camMinutiaesFillKDE(pts);
+
+  // XXX camCanvasDrawMinutiaes(camCombo, pts, 2);
 }
 
 function camCanvasDrawImage(canvas, data, w, h, zoom) {
@@ -505,6 +533,7 @@ function camContentEnd(type) {
     var data = new Uint8Array(_camMinutiaes);
     var pts = min_record_decode(data);
     camMinutiaesFillTable(pts);
+    camMinutiaesFillKDE(pts);
     camMinutiaesShowAsHex();
     camCanvasDrawMinutiaes(camCombo, pts, 2);
   }

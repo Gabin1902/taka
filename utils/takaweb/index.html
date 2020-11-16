@@ -74,8 +74,10 @@
             <canvas id="camMorph"></canvas>
             <h2>Frame (morph + minutiaes, zoom x2)</h2>
             <canvas id="camCombo"></canvas>
+            <h2>Minutiaes (Quality Graph)</h2>
+            <div id="camMinutiaesKDE"></div>
             <h2>Minutiaes (Hexdump)</h2>
-            <span id="camMinutiaesHex" class="hexdump"></span>
+            <textarea id="camMinutiaesHex" class="hexdump"></textarea>
             <h2>Minutiaes (Decoded)</h2>
             <table class="tableSmall">
                 <thead>
@@ -121,6 +123,8 @@
         <script src="openjpeg.js"></script>
         <script src="icaodecode.js"></script>
         <script src="mindecode.js"></script>
+        <script src="d3.v3.min.js"></script>
+        <script src="kde.js"></script>
         <script src="index.js" type="module"></script>
     </body>
 </html>
