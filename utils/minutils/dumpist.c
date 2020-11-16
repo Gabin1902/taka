@@ -4,6 +4,7 @@
 #include <errno.h>
 
 #include "minutiaes.h"
+#include "cam.h"
 
 #define MAXSIZE 8192
 
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
 
     uint8_t *minutiaes = NULL;
     size_t minutiaes_len;
+
+    int score;
 
     FILE *in;
 
@@ -50,6 +53,14 @@ int main(int argc, char *argv[])
         printf("ERROR min_record_decode: %d\n", ret);
     }
     pts_print(pts, pts_count);
+    printf("\n");
+
+    /* Show score */
+
+    printf("Number of minutiaes: %ld\n", pts_count);
+    ret = pts_quality_threshold(pts, &pts_count, CAM_QUALITY_THRESHOLD,
+                                CAM_MIN_POINTS_NB, CAM_MAX_POINTS_NB, &score);
+    printf("Score: %d\nSubmit: %d\n", score, ret);
 
     free(pts);
     free(minutiaes);
