@@ -66,16 +66,16 @@ def show_image(path):
     print()
     imgplot = plt.imshow(img, cmap="gray")
 
-def show_point(x, y, angle, ptype, color="red"):
+def show_point(x, y, angle, ptype, color="red", transparency=0.6):
     # print(x, y, angle)
     alpha = angle * (math.pi / 180)
     dx = int(math.cos(alpha) * 10)
     dy = -int(math.sin(alpha) * 10)
-    plt.plot([x, x + dx], [y, y + dy], color, linewidth=3)
+    plt.plot([x, x + dx], [y, y + dy], color, linewidth=3, alpha=transparency)
     types = ["*", "^", "x", "."]
-    plt.scatter(x=x, y=y, c=color, s=100, marker=types[ptype])
+    plt.scatter(x=x, y=y, c=color, s=100, marker=types[ptype], alpha=transparency)
 
-def show_compact(data, color="red"):
+def show_compact(data, color="red", transparency=0.6):
     scale = 1.968503937
     for i in range(len(data) // 3):
         x, y, tmp = data[3*i:3*(i+1)]
@@ -86,12 +86,12 @@ def show_compact(data, color="red"):
         x *= scale
         y *= scale
         angle *= (360.0 / 64.0)
-        show_point(x, y, angle, ptype, color=color)
+        show_point(x, y, angle, ptype, color=color, transparency=transparency)
 
-def show_ist(data, color="red"):
+def show_ist(data, color="red", transparency=0.6):
     points = min_record_decode(data)
     for point in points:
-        show_point(point.x, point.y, point.angle, point.type, color=color)
+        show_point(point.x, point.y, point.angle, point.type, color=color, transparency=transparency)
 
 def show_ist_file(ist, color):
     print(ist)
@@ -121,12 +121,13 @@ if __name__ == "__main__":
     base = sys.argv[1]
 
     image = base + ".pgm"
-    official = base
-    compact = base + ".mybin"
-    ist = base + ".ist"
+    remote = base
+    local = base + ".mybin"
+    fmr = base + ".fmr" # remotely found fmr/ist
+    ist = base + ".ist" # locally found fmr/ist
 
     show_image(image)
-    show_compact_file(official, "#FF0000")
+    show_compact_file(local, "#00FF00")
+    show_compact_file(remote, "#FF0000")
     # show_ist_file(ist, "#0000FF")
-    show_compact_file(compact, "#00FF00")
     plt.show()
