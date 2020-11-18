@@ -20,6 +20,9 @@ dumpcompact: dumpcompact.c
 submit: submit.c
 	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
 
+submit_translate: submit_translate.c
+	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
+
 clean:
 	rm -f $(TARGETS)
 
