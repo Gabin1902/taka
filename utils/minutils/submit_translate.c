@@ -154,7 +154,7 @@ void pts_translate(struct pts_s *pts, size_t count, int offx, int offy)
     }
 }
 
-int get_compact_with_translate(const char *path, int minquality,
+int get_compact_with_translate(const char *path, int minscore,
                                int offx, int offy,
                                int mincount, unsigned char **out, int *outlen)
 {
@@ -205,7 +205,7 @@ int get_compact_with_translate(const char *path, int minquality,
 
     /* Discard bad quality points */
 
-    ret = pts_quality_threshold(pts, &pts_count, minquality,
+    ret = pts_quality_threshold(pts, &pts_count, minscore,
                                 mincount, maxcount, &score);
     if (ret != OK)
       {
@@ -252,7 +252,7 @@ int get_compact_with_translate(const char *path, int minquality,
     return 0;
 }
 
-int get_compact_with_quality(const char *path, int minquality,
+int get_compact_with_quality(const char *path, int minscore,
                              int mincount, unsigned char **out, int *outlen)
 {
     int ret;
@@ -302,7 +302,7 @@ int get_compact_with_quality(const char *path, int minquality,
 
     /* Discard bad quality points */
 
-    ret = pts_quality_threshold(pts, &pts_count, minquality,
+    ret = pts_quality_threshold(pts, &pts_count, minscore,
                                 mincount, maxcount, &score);
     if (ret != OK)
       {
@@ -387,7 +387,7 @@ int main(int argc, char **argv)
     unsigned char *good;
     int goodlen;
     size_t ref_device_count;
-    int quality = 40;
+    int minscore = 40;
     int num;
     int off;
     char *path;
@@ -459,10 +459,10 @@ int main(int argc, char **argv)
 
         /* check with a test buffer */
 
-        // ret = get_compact_with_quality(path, quality, num, &compact, &compactlen);
-        ret = get_compact_with_translate(path, quality, 0, off, num, &compact, &compactlen);
+        // ret = get_compact_with_quality(path, minscore, num, &compact, &compactlen);
+        ret = get_compact_with_translate(path, minscore, 0, off, num, &compact, &compactlen);
         if (ret != 0) {
-            printf("Cannot get compact %d, %d\n", quality, num);
+            printf("Cannot get compact %d, %d\n", minscore, num);
             continue;
         }
         make_verify_apdu(compact, compactlen, outbuf, &outlen);

@@ -52,14 +52,15 @@ int main(int argc, char *argv[])
     if (ret != OK) {
         printf("ERROR min_record_decode: %d\n", ret);
     }
-    pts_print(pts, pts_count);
+    // pts_print(pts, pts_count);
     printf("\n");
 
     /* Show score */
 
     printf("Number of minutiaes: %ld\n", pts_count);
-    ret = pts_quality_threshold(pts, &pts_count, CAM_QUALITY_THRESHOLD,
-                                CAM_MIN_POINTS_NB, CAM_MAX_POINTS_NB, &score);
+    ret = pts_quality_threshold(pts, &pts_count, CAM_SCORE_THRESHOLD,
+                                CAM_MIN_POINTS_NB, CAM_MAX_POINTS_NB,
+                                true, &score);
     printf("Score: %d\nSubmit: %d\n", score, ret);
 
     free(pts);

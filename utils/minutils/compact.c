@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
     FILE *in;
     FILE *out;
 
-    int minquality;
+    int minscore;
     int mincount;
     int maxcount = 35;
     int score;
 
     if (argc < 5) {
-        printf("usage: %s minutiaes.ist minquality mincount outfile.bin\n", argv[0]);
+        printf("usage: %s minutiaes.ist minscore mincount outfile.bin\n", argv[0]);
         return -1;
     }
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    minquality = atoi(argv[2]);
+    minscore = atoi(argv[2]);
     mincount = atoi(argv[3]);
 
     /* Read the file */
@@ -74,8 +74,8 @@ int main(int argc, char *argv[])
 
     /* Discard bad quality points */
 
-    ret = pts_quality_threshold(pts, &pts_count, minquality,
-                                mincount, maxcount, &score);
+    ret = pts_quality_threshold(pts, &pts_count, minscore,
+                                mincount, maxcount, true, &score);
     if (ret != OK)
       {
         printf("ERROR not enough quality points\n");

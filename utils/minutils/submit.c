@@ -143,7 +143,7 @@ int verify(nfc_device *pnd, unsigned char *outbuf, int outlen)
     }
 }
 
-int get_compact(const char *path, int minquality, int mincount, unsigned char **out, int *outlen)
+int get_compact(const char *path, int minscore, int mincount, unsigned char **out, int *outlen)
 {
     int ret;
 
@@ -192,8 +192,8 @@ int get_compact(const char *path, int minquality, int mincount, unsigned char **
 
     /* Discard bad quality points */
 
-    ret = pts_quality_threshold(pts, &pts_count, minquality,
-                                mincount, maxcount, &score);
+    ret = pts_quality_threshold(pts, &pts_count, minscore,
+                                mincount, maxcount, true, &score);
     if (ret != OK)
       {
         printf("ERROR not enough quality points\n");
@@ -276,7 +276,7 @@ int main(int argc, char **argv)
     unsigned char *good;
     int goodlen;
     size_t ref_device_count;
-    int quality = 40;
+    int minscore = 40;
     int num;
     char *path;
 
@@ -344,9 +344,9 @@ int main(int argc, char **argv)
 
         /* check with a test buffer */
 
-        ret = get_compact(path, quality, num, &compact, &compactlen);
+        ret = get_compact(path, minscore, num, &compact, &compactlen);
         if (ret != 0) {
-            printf("Cannot get compact %d, %d\n", quality, num);
+            printf("Cannot get compact %d, %d\n", minscore, num);
             continue;
         }
         make_verify_apdu(compact, compactlen, outbuf, &outlen);

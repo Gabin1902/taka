@@ -23,6 +23,15 @@ submit: submit.c
 submit_translate: submit_translate.c
 	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
 
+run:
+	find ../samples/ -name "*.png" | while read name ; do echo $${name%.*}; convert $${name%.*}.png $${name%.*}.pgm; done
+	@echo
+	find ../samples/ -name "*.pgm" | while read name ; do echo $${name%.*}; ./extract $${name%.*}.pgm $${name%.*}.ist; done
+	@echo
+	find ../samples/ -name "*.ist" | while read name ; do echo $${name%.*}; ./dumpist $${name%.*}.ist; done
+	@echo
+	find ../samples/ -name "*.ist" | while read name ; do echo $${name%.*}; ./compact $${name%.*}.ist 50 16 $${name%.*}.mybin ; done
+
 clean:
 	rm -f $(TARGETS)
 
