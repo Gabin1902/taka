@@ -88,17 +88,73 @@ def show_compact(data, color="red", transparency=0.6):
         angle *= (360.0 / 64.0)
         show_point(x, y, angle, ptype, color=color, transparency=transparency)
 
-def show_ist(data, color="red", transparency=0.6):
+def show_square(color="yellow"):
+    size = 75
+    # x = 348/2 - size/2
+    x = 314/2 - size/2
+    # y = 348/2 - size/2
+    y = 322/2 - size/2
+
+    plt.plot([x, x + size], [y, y], color, linewidth=3)
+    plt.plot([x + size, x + size], [y, y + size], color, linewidth=3)
+    plt.plot([x, x + size], [y + size, y + size], color, linewidth=3)
+    plt.plot([x, x], [y, y + size], color, linewidth=3)
+
+def show_circle(color="yellow"):
+    size = 75
+    x = 314/2
+    y = 322/2
+
+    theta = np.linspace(0, 2*np.pi, 100)
+    r = size / 2
+    x1 = x + r*np.cos(theta)
+    x2 = y + r*np.sin(theta)
+    plt.plot(x1, x2, color=color, linewidth=3)
+
+def show_ist(data, transparency=1, threshold=0, discard_type0=False, maxpoints=35):
     points = min_record_decode(data)
+    qmin = 40
+    i = 0
+
+    sx = 0
+    sy = 0
+    sw = 0
+
     for point in points:
+        if point.quality < threshold:
+            continue
+        if discard_type0 and point.type == 0:
+            continue
+
+        q = (point.quality - qmin) * 100 / (100 - qmin)
+        green = int(q * 2.55)
+        blue = int((100-q) * 2.55)
+        color = "#00{:02x}{:02x}".format(green, blue)
+
         show_point(point.x, point.y, point.angle, point.type, color=color, transparency=transparency)
 
-def show_ist_file(ist, color):
+        # weighted sum
+        sx += point.x * point.quality
+        sy += point.y * point.quality
+        sw += point.quality
+
+        i += 1
+        if i >= maxpoints:
+            break
+
+    sx /= sw
+    sy /= sw
+
+    show_square()
+    show_circle()
+    show_point(sx, sy, 0, 3, color="red", transparency=transparency)
+
+def show_ist_file(ist, threshold=0, discard_type0=False, maxpoints=35):
     print(ist)
     file = open(ist, "rb")
     data = file.read()
     file.close()
-    show_ist(data, color)
+    show_ist(data, threshold=threshold, discard_type0=discard_type0, maxpoints=maxpoints)
     print()
 
 def show_compact_file(compact, color):
@@ -127,7 +183,7 @@ if __name__ == "__main__":
     ist = base + ".ist" # locally found fmr/ist
 
     show_image(image)
-    show_compact_file(local, "#00FF00")
-    show_compact_file(remote, "#FF0000")
-    # show_ist_file(ist, "#0000FF")
+    # show_compact_file(local, "#00FF00")
+    # show_compact_file(remote, "#FF0000")
+    show_ist_file(ist, discard_type0=True, maxpoints=35)
     plt.show()
