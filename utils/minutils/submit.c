@@ -21,30 +21,93 @@ uint8_t APDU_READ_BIT[] = {
     0x7f, 0x60, 0x80, 0x00
 };
 
-uint8_t APDU_VERIFY_FING[] = {
-    0x00, 0x21, 0x00, 0x81,
-    00,
-    0x7f, 0x2E,
-    00,
-    0x81,
-    00,
-};
-
-// unsigned char BUF_5130159536_2_OK[] = { /* official WSQ with fingerjet for 5130159536_2 OK */
-//     0x47, 0x2b, 0x5c, 0x34, 0x3c, 0x61, 0x4b, 0x3d, 0xbb, 0x45, 0x45, 0x79, 0x37, 0x52, 0x7d, 0x19,
-//     0x58, 0x65, 0x29, 0x58, 0xa5, 0x0d, 0x5f, 0x84, 0x1e, 0x62, 0x85, 0x66, 0x63, 0xb4, 0x1a, 0x6c,
-//     0x44, 0x54, 0x6f, 0xab, 0x1e, 0x73, 0x42, 0x5f, 0x74, 0xaa, 0x57, 0x7e, 0x4c, 0x49, 0x9b, 0x83,
-// };
-
-void make_verify_apdu(char *in, int in_len, char *out, int *outlen)
+void make_verify_apdu(uint8_t *in, int in_len, uint8_t *out, int *outlen)
 {
-    memcpy(out, APDU_VERIFY_FING, sizeof(APDU_VERIFY_FING));
-    memcpy(out+sizeof(APDU_VERIFY_FING), in, in_len);
-    out[9] = in_len;
-    out[7] = in_len + 2;
-    out[4] = in_len + 5;
-    out[in_len + sizeof(APDU_VERIFY_FING)] = 0;
-    *outlen = in_len + sizeof(APDU_VERIFY_FING) +1;
+  char buf[16];
+  char *pnt = buf + 15;
+  int curlen = in_len;
+
+  /* BITSTRING: ending 0*/
+
+  *pnt = 0;
+  pnt--;
+  curlen++;
+
+  /* BITSTRING: length */
+
+  *pnt = curlen;
+  pnt--;
+  curlen++;
+  if (curlen > 0x80)
+    {
+      *pnt = 0x81;
+      pnt--;
+      curlen++;
+    }
+
+  /* BITSTRING: tag */
+
+  *pnt = 0x03;
+  pnt--;
+  curlen++;
+
+  /* Finger minutiae data: length */
+
+  *pnt = curlen;
+  pnt--;
+  curlen++;
+  if (curlen > 0x80)
+    {
+      *pnt = 0x81;
+      pnt--;
+      curlen++;
+    }
+
+  /* Finger minutiae data: tag */
+
+  *pnt = 0x81;
+  pnt--;
+  curlen++;
+
+  /* Biometric data template: length */
+
+  *pnt = curlen;
+  pnt--;
+  curlen++;
+  if (curlen > 0x80)
+    {
+      *pnt = 0x81;
+      pnt--;
+      curlen++;
+    }
+
+  /* Biometric data template: tag */
+
+  *pnt = 0x2e;
+  pnt--;
+  curlen++;
+
+  *pnt = 0x7f;
+  pnt--;
+  curlen++;
+
+  /* APDU VERIFY: length */
+
+  *pnt = curlen;
+
+  /* APDU VERIFY: command */
+
+  pnt -= 4;
+  memcpy(pnt, "\x00\x21\x00\x81", 4);
+
+  /* Header is built, copy it to out buffer */
+
+  memcpy(out, pnt, buf + 16 - pnt);
+
+  /* Copy minutiaes data */
+
+  memcpy(out + (buf + 16 - pnt), in, in_len);
+  *outlen = buf + 16 - pnt + in_len;
 }
 
 #define MAXSIZE 8192
