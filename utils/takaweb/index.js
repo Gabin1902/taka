@@ -494,30 +494,39 @@ function camCanvasDrawImage(canvas, data, w, h, zoom) {
 function camCanvasDrawMinutiaes(canvas, pts, zoom) {
   var ctx = canvas.getContext("2d");
   const qmin = 40;
+  var total = 0;
   ctx.lineWidth = zoom;
 
   pts.forEach(p => {
-    let alpha = p.angle * (Math.PI / 180.0);
-    let dx = Math.cos(alpha) * 10;
-    let dy = -Math.sin(alpha) * 10;
 
-    /* blue -> green scale */
-    let q = (p.quality - qmin) * 100 / (100 - qmin);
-    let green = Math.floor(q * 2.55);
-    green = ("00" + green.toString(16)).substr(-2);
-    let blue = Math.floor((100-q) * 2.55);
-    blue = ("00" + blue.toString(16)).substr(-2);
-    let color = "#00" + green + blue;
+    if (p.type != 0) {
+      let alpha = p.angle * (Math.PI / 180.0);
+      let dx = Math.cos(alpha) * 10;
+      let dy = -Math.sin(alpha) * 10;
 
-    ctx.fillStyle = color;
-    ctx.fillRect((p.x-1)*zoom, (p.y-1)*zoom, 3*zoom, 3*zoom);
+      /* blue -> green scale */
+      let q = (p.quality - qmin) * 100 / (100 - qmin);
+      let green = Math.floor(q * 2.55);
+      green = ("00" + green.toString(16)).substr(-2);
+      let blue = Math.floor((100-q) * 2.55);
+      blue = ("00" + blue.toString(16)).substr(-2);
+      let color = "#00" + green + blue;
 
-    ctx.beginPath();
-    ctx.moveTo(p.x * zoom, p.y * zoom);
-    ctx.lineTo((p.x + dx) * zoom, (p.y + dy) * zoom);
-    ctx.closePath();
-    ctx.strokeStyle = color;
-    ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.fillRect((p.x-1)*zoom, (p.y-1)*zoom, 3*zoom, 3*zoom);
+
+      ctx.beginPath();
+      ctx.moveTo(p.x * zoom, p.y * zoom);
+      ctx.lineTo((p.x + dx) * zoom, (p.y + dy) * zoom);
+      ctx.closePath();
+      ctx.strokeStyle = color;
+      ctx.stroke();
+
+      total += 1;
+      if (total >= 35) {
+        return;
+      }
+    }
   })
 }
 
