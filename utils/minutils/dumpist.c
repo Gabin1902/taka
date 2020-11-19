@@ -4,6 +4,7 @@
 #include <errno.h>
 
 #include "minutiaes.h"
+#include "frame.h"
 #include "cam.h"
 
 #define MAXSIZE 8192
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     size_t minutiaes_len;
 
     int score;
+    int bar_x, bar_y;
 
     FILE *in;
 
@@ -52,7 +54,7 @@ int main(int argc, char *argv[])
     if (ret != OK) {
         printf("ERROR min_record_decode: %d\n", ret);
     }
-    // pts_print(pts, pts_count);
+    pts_print(pts, pts_count);
     printf("\n");
 
     /* Show score */
@@ -62,6 +64,15 @@ int main(int argc, char *argv[])
                                 CAM_MIN_POINTS_NB, CAM_MAX_POINTS_NB,
                                 true, &score);
     printf("Score: %d\nSubmit: %d\n", score, ret);
+
+    /* Show barycenter */
+
+    pts_barycenter(pts, pts_count, &bar_x, &bar_y);
+    printf("Barycenter: x=%d, y=%d\n", bar_x, bar_y);
+
+    ret = in_circle(FRAME_DW / 2, FRAME_DH / 2, CAM_CIRCLE_RADIUS,
+                    bar_x, bar_y);
+    printf("Is in circle: ret=%d\n", ret);
 
     free(pts);
     free(minutiaes);

@@ -102,14 +102,38 @@ def show_square(color="yellow"):
 
 def show_circle(color="yellow"):
     size = 75
-    x = 314/2
-    y = 322/2
+    cx = 314/2
+    cy = 322/2
 
     theta = np.linspace(0, 2*np.pi, 100)
     r = size / 2
-    x1 = x + r*np.cos(theta)
-    x2 = y + r*np.sin(theta)
+    x1 = cx + r*np.cos(theta)
+    x2 = cy + r*np.sin(theta)
     plt.plot(x1, x2, color=color, linewidth=3)
+
+def in_circle(x, y):
+    size = 75
+    cx = 314/2
+    cy = 322/2
+    r = size / 2
+
+    dx = (x - cx)
+    dy = (y - cy)
+
+    if (dx * dx + dy * dy) > (r * r):
+        print("outside")
+        if (dx * dx) >= (dy * dy):
+            if dx > 0:
+                print("too right, move left")
+            else:
+                print("too left, move right")
+        else:
+            if dy > 0:
+                print("too low, move up")
+            else:
+                print("too up, move down")
+    else:
+        print("inside")
 
 def show_ist(data, transparency=1, threshold=0, discard_type0=False, maxpoints=35):
     points = min_record_decode(data)
@@ -147,6 +171,7 @@ def show_ist(data, transparency=1, threshold=0, discard_type0=False, maxpoints=3
 
     show_square()
     show_circle()
+    in_circle(sx, sy)
     show_point(sx, sy, 0, 3, color="red", transparency=transparency)
 
 def show_ist_file(ist, threshold=0, discard_type0=False, maxpoints=35):
