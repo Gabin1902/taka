@@ -446,6 +446,7 @@ function camMinutiaesFillKDE(pts) {
   }
 }
 
+/*
 camMinutiaesHex.onchange = function(e) {
   camMinutiaesDrop();
 
@@ -460,6 +461,7 @@ camMinutiaesHex.onchange = function(e) {
 
   // XXX camCanvasDrawMinutiaes(camCombo, pts, 2);
 }
+*/
 
 function camCanvasDrawImage(canvas, data, w, h, zoom) {
   canvas.width = w * zoom;
