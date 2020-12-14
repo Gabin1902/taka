@@ -135,6 +135,12 @@ def in_circle(x, y):
     else:
         print("inside")
 
+def print_ist_stats(points):
+    total = len(points)
+    type0 = len([p for p in points if p.type == 0])
+    print("Total: {}, Type0: {}, Other: {}, Ratio: {}%".format(
+              total, type0, total - type0, 100.0 * type0 // total))
+
 def show_ist(data, transparency=1, threshold=0, discard_type0=False, maxpoints=35):
     points = min_record_decode(data)
     qmin = 40
@@ -144,18 +150,29 @@ def show_ist(data, transparency=1, threshold=0, discard_type0=False, maxpoints=3
     sy = 0
     sw = 0
 
+    print_ist_stats(points)
+
     for point in points:
         if point.quality < threshold:
             continue
+
         if discard_type0 and point.type == 0:
+            color = "#ff00ff"
+            show_point(point.x, point.y, point.angle, point.type,
+                       color=color, transparency=transparency)
             continue
-
-        q = (point.quality - qmin) * 100 / (100 - qmin)
-        green = int(q * 2.55)
-        blue = int((100-q) * 2.55)
-        color = "#00{:02x}{:02x}".format(green, blue)
-
-        show_point(point.x, point.y, point.angle, point.type, color=color, transparency=transparency)
+        elif i >= maxpoints:
+            color = "#ffff00"
+            show_point(point.x, point.y, point.angle, point.type,
+                       color=color, transparency=transparency)
+            continue
+        else:
+            q = (point.quality - qmin) * 100 / (100 - qmin)
+            green = int(q * 2.55)
+            blue = int((100-q) * 2.55)
+            color = "#00{:02x}{:02x}".format(green, blue)
+            show_point(point.x, point.y, point.angle, point.type,
+                       color=color, transparency=transparency)
 
         # weighted sum
         sx += point.x * point.quality
@@ -163,8 +180,6 @@ def show_ist(data, transparency=1, threshold=0, discard_type0=False, maxpoints=3
         sw += point.quality
 
         i += 1
-        if i >= maxpoints:
-            break
 
     sx /= sw
     sy /= sw
@@ -201,14 +216,20 @@ if __name__ == "__main__":
 
     base = sys.argv[1]
 
-    image = base + ".pgm"
-    remote = base
-    local = base + ".mybin"
-    fmr = base + ".fmr" # remotely found fmr/ist
-    ist = base + ".ist" # locally found fmr/ist
+    # image = base + ".pgm"
+    # remote = base
+    # local = base + ".mybin"
+    # fmr = base + ".fmr" # remotely found fmr/ist
+    # ist = base + ".ist" # locally found fmr/ist
+
+    image = base + "morph.png"
+    # image = base + ".png"
+    # image = base + "morph.jpeg"
+    fmr = base + "morph.fmr"
 
     show_image(image)
     # show_compact_file(local, "#00FF00")
     # show_compact_file(remote, "#FF0000")
-    show_ist_file(ist, discard_type0=True, maxpoints=35)
+    show_ist_file(fmr, discard_type0=True, maxpoints=35)
+    # show_ist_file(ist, discard_type0=True, maxpoints=35)
     plt.show()
