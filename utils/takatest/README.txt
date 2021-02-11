@@ -1,5 +1,5 @@
-Install Udev rules
-==================
+(Linux) Install Udev rules
+==========================
 
 Write the rule in:
 
@@ -11,6 +11,13 @@ ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="ffff", ATTRS{idProduct}=="123
 Reload the rules:
 
 # udevadm control --reload-rules && udevadm trigger
+
+(Windows) Install WinUSB driver
+===============================
+
+https://zadig.akeo.ie/
+
+Assign "WinUSB" driver to the device.
 
 Run the HTTP server for testing
 ===============================

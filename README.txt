@@ -7,7 +7,7 @@ Taka Nuttx
 Dependencies:
     arm-none-eabi-gcc
     kconfig-frontends
-    asn1c
+    asn1c (Compile from latest git: https://github.com/vlm/asn1c.git)
 
 1. Clone the submodules
 -----------------------
