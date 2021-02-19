@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Utilisation &mdash; LambdaConcept Taka  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Fonctionnalités" href="features.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LambdaConcept Taka
+          
+
+          
+            
+            <img src="_static/taka.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#demarrage">Démarrage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insertion-de-la-carte-d-identite">1. Insertion de la carte d’identité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-de-la-carte">2. Lecture de la carte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#capture-de-l-empreinte-digitale">3. Capture de l’empreinte digitale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verification-des-minutiaes">4. Vérification des minutiaes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#journalisation-des-evenements">5. Journalisation des évenements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Journaux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Mise à jour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casing.html">Boîtier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Développement</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LambdaConcept Taka</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Utilisation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utilisation">
+<h1>Utilisation<a class="headerlink" href="#utilisation" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="demarrage">
+<h2>Démarrage<a class="headerlink" href="#demarrage" title="Permalink to this headline">¶</a></h2>
+<p>Tout d’abord, allumer le boitier Taka en actionnant l’interrupteur On/Off
+situé sur le côté droit.</p>
+<p>Lors du démarrage, plusieurs vérifications sont effectuées pour garantir
+le bon fonctionnement du système. Notamment:</p>
+<ul class="simple">
+<li><p>Vérification de la date/heure</p></li>
+<li><p>Vérification du capteur caméra</p></li>
+<li><p>Vérification de la présence de la carte SD</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/boot1.png"><img alt="_images/boot1.png" src="_images/boot1.png" style="width: 300px; height: 400px;" /></a>
+<p>En cas d’échec des vérifications système, le message d’erreur correspondant
+s’affiche sur l’écran. On se réfèrera alors à la section <a class="reference internal" href="troubleshooting.html"><span class="doc">Diagnostics</span></a>.</p>
+<p>Le scénario d’authentification d’un bénéficiaire se déroule comme suit:</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="insertion-de-la-carte-d-identite">
+<span id="refstep1"></span><h2>1. Insertion de la carte d’identité<a class="headerlink" href="#insertion-de-la-carte-d-identite" title="Permalink to this headline">¶</a></h2>
+<p>Le boitier Taka affiche le message <code class="docutils literal notranslate"><span class="pre">INSEREZ</span> <span class="pre">LA</span> <span class="pre">CARTE</span></code> et attend.
+Les LEDs sont éteintes.</p>
+<a class="reference internal image-reference" href="_images/insert.png"><img alt="_images/insert.png" src="_images/insert.png" style="width: 300px; height: 400px;" /></a>
+<p>Lorsque l’insertion d’une carte est détectée, la machine passe à l’étape
+<a class="reference internal" href="#refstep2"><span class="std std-ref">2. Lecture de la carte</span></a>.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="lecture-de-la-carte">
+<span id="refstep2"></span><h2>2. Lecture de la carte<a class="headerlink" href="#lecture-de-la-carte" title="Permalink to this headline">¶</a></h2>
+<p>Affichage du message <code class="docutils literal notranslate"><span class="pre">LECTURE</span> <span class="pre">EN</span> <span class="pre">COURS</span></code>.
+Les LEDs restent éteintes.</p>
+<a class="reference internal image-reference" href="_images/reading.png"><img alt="_images/reading.png" src="_images/reading.png" style="width: 300px; height: 400px;" /></a>
+<p>La communication s’établit avec la carte d’identité et les actions
+suivantes sont effectuées:</p>
+<ul class="simple">
+<li><p>Lecture des 4 conteneurs ARCH (Health, Formation, Credit, Retirement)</p></li>
+<li><p>Vérification des dates d’éligibilité à l’assurance maladie, en comparant
+les dates de validité spécifiées dans le conteneur ARCH “Health” avec la
+date actuelle.</p></li>
+<li><p>Lecture des fichiers ICAO (SoD, DG1-DG16), qui contiennent les informations
+sur l’identité de la personne.</p></li>
+<li><p>Authentification cryptographiques passive de la carte d’identité.</p></li>
+</ul>
+<p>L’authentification passive (Standard ICAO 9303 Part 11) s’assure de
+l’authenticité et de l’intégrité des données ICAO en validant les signatures
+cryptographiques des fichiers et la chaine de confiance depuis le certificat
+national PKCS#7.</p>
+<p>Lorsque les données de la carte sont lues avec succès, passage à l’étape
+<a class="reference internal" href="#refstep3"><span class="std std-ref">3. Capture de l’empreinte digitale</span></a>.</p>
+<p>En cas d’échec de la lecture (carte illisible, carte retirée, carte mal
+provisionnée, carte non authentique, etc),
+l’erreur correspondante est affichée sur l’écran, la LED devient rouge et
+demande le retrait de la carte. Retour à l’étape <a class="reference internal" href="#refstep1"><span class="std std-ref">1. Insertion de la carte d’identité</span></a>.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="capture-de-l-empreinte-digitale">
+<span id="refstep3"></span><h2>3. Capture de l’empreinte digitale<a class="headerlink" href="#capture-de-l-empreinte-digitale" title="Permalink to this headline">¶</a></h2>
+<p>Affichage du message <code class="docutils literal notranslate"><span class="pre">POSEZ</span> <span class="pre">LE</span> <span class="pre">DOIGT</span> <span class="pre">INDEX</span> <span class="pre">DROIT</span></code>.
+La LED RGB devient bleue, et la LED caméra s’allume aussi en bleu pour inciter
+l’utilisateur à poser son doigt. Les LED infrarouges du capteur caméra
+sont activés pour assurer une meilleur qualité d’image.</p>
+<a class="reference internal image-reference" href="_images/placefinger.png"><img alt="_images/placefinger.png" src="_images/placefinger.png" style="width: 300px; height: 400px;" /></a>
+<p>L’application passe en attente jusqu’à ce que l’utilisateur pose son doigt
+sur le prisme de la caméra optique. La présence du doigt est détectée par un
+capteur tactile situé à l’avant du prisme.</p>
+<p>Lorsque le doigt est stable, une image est capturée par la caméra et
+traitée par une librairie d’extraction de minutiaes satisfaisant aux critères
+de performance et de qualité spécifiés par MINEX.</p>
+<p>Si la qualité de l’image est insuffisante (trop peu de minutiaes) ou que le
+placement du doigt est mauvais (pas assez appuyé, trop haut, trop bas, etc),
+un message est affiché sur l’écran LCD pour inviter l’utilisateur à
+repositionner son doigt correctement. Le processus recommence l’étape
+<a class="reference internal" href="#refstep3"><span class="std std-ref">3. Capture de l’empreinte digitale</span></a>.</p>
+<p>Si l’image est de bonne qualité, la machine passe à l’étape <a class="reference internal" href="#refstep4"><span class="std std-ref">4. Vérification des minutiaes</span></a>.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="verification-des-minutiaes">
+<span id="refstep4"></span><h2>4. Vérification des minutiaes<a class="headerlink" href="#verification-des-minutiaes" title="Permalink to this headline">¶</a></h2>
+<p>Les minutiaes sont convertis au format Card-Compact (ISO/IEC 19794-2:2005)
+et soumis à la carte d’identité pour vérification, via l’application
+MoC (Match-on-card).</p>
+<p>Si les minutiaes soumis correspondent à ceux provisionnés, la carte accepte
+l’authentification de l’utilisateur, et le boitier Taka affiche alors le
+message <code class="docutils literal notranslate"><span class="pre">DOIGT</span> <span class="pre">ACCEPTE</span></code> ainsi que le statut d’éligibilité ou non à
+l’assurance maladie (lu lors de l’étape <a class="reference internal" href="#refstep2"><span class="std std-ref">2. Lecture de la carte</span></a>).
+Le buzzer émet un son “succès”.</p>
+<p>La couleur de la LED change en fonction des cas:</p>
+<ul class="simple">
+<li><p>Authentifié et éligible: LED verte</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/eligible.png"><img alt="_images/eligible.png" src="_images/eligible.png" style="width: 300px; height: 400px;" /></a>
+<ul class="simple">
+<li><p>Authentifié mais non éligible: LED jaune</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/noteligible.png"><img alt="_images/noteligible.png" src="_images/noteligible.png" style="width: 300px; height: 400px;" /></a>
+<p>En cas de refus des minutiaes par la carte, Taka affiche le message
+<code class="docutils literal notranslate"><span class="pre">DOIGT</span> <span class="pre">REFUSE</span></code>. La LED devient rouge et le buzzer émet un son “échec”.
+Le nombre d’essais restants avant le blocage de la carte
+est alors affiché sur l’écran.</p>
+<a class="reference internal image-reference" href="_images/refused.png"><img alt="_images/refused.png" src="_images/refused.png" style="width: 300px; height: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/lockcounter.png"><img alt="_images/lockcounter.png" src="_images/lockcounter.png" style="width: 300px; height: 400px;" /></a>
+<p>Dans tous les cas (authentifié ou non, éligible ou non), la tentative est
+logguée. Passage à l’étape <a class="reference internal" href="#refstep5"><span class="std std-ref">5. Journalisation des évenements</span></a>.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="journalisation-des-evenements">
+<span id="refstep5"></span><h2>5. Journalisation des évenements<a class="headerlink" href="#journalisation-des-evenements" title="Permalink to this headline">¶</a></h2>
+<p>L’opération d’authentification et son résultat sont enregistrés,
+avec l’identité de la personne, la date et l’heure de passage, dans un
+journal stocké dans une mémoire de type carte micro SD.</p>
+<p>Ces journaux sont notamment accessibles par l’intermédiaire de l’<a class="reference internal" href="api.html"><span class="doc">API</span></a>.</p>
+<ul class="simple">
+<li><p>En cas de succès de l’authentification:</p></li>
+</ul>
+<p>La procédure est terminée. Le boitier Taka passe dans un état d’attente,
+jusqu’à ce que l’utilisateur retire sa carte d’identité. La procédure
+recommence alors à l’étape <a class="reference internal" href="#refstep1"><span class="std std-ref">1. Insertion de la carte d’identité</span></a> pour l’utilisateur suivant.</p>
+<ul class="simple">
+<li><p>En cas d’échec de l’authentification:</p></li>
+</ul>
+<p>La procédure retourne automatiquement l’étape <a class="reference internal" href="#refstep3"><span class="std std-ref">3. Capture de l’empreinte digitale</span></a> après quelques
+secondes pour un nouvel essai du même utilisateur.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="features.html" class="btn btn-neutral float-left" title="Fonctionnalités" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LambdaConcept.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

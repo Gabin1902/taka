@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Développement &mdash; LambdaConcept Taka  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Boîtier" href="casing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LambdaConcept Taka
+          
+
+          
+            
+            <img src="_static/taka.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Journaux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Mise à jour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casing.html">Boîtier</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Développement</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#console-de-debug">Console de debug</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#minicom">Minicom</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#telnet">Telnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compilation">Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-nuttx">Architecture NuttX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LambdaConcept Taka</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Développement</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developpement">
+<h1>Développement<a class="headerlink" href="#developpement" title="Permalink to this headline">¶</a></h1>
+<p>Le firmware de Taka est basé sur le système d’exploitation temps réel
+NuttX.</p>
+<div class="section" id="console-de-debug">
+<h2>Console de debug<a class="headerlink" href="#console-de-debug" title="Permalink to this headline">¶</a></h2>
+<p>La console de debug de Taka est accessible par le connecteur 3 pins CN12
+situé sur la carte mère. Il faut y connecter un câble de type debug UART.
+(Par exemple le câble LambdaConcept Jtag+Serial)</p>
+<ul class="simple">
+<li><p>Pin 1 (Carré): Taka TX</p></li>
+<li><p>Pin 2: Taka RX</p></li>
+<li><p>Pin 3: GND</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/cn12.jpg"><img alt="_images/cn12.jpg" src="_images/cn12.jpg" style="width: 256px;" /></a>
+<p><strong>Exemples de branchement</strong></p>
+<ul class="simple">
+<li><p>En soudant les fils au dos de la carte mère:</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/solder.jpg"><img alt="_images/solder.jpg" src="_images/solder.jpg" style="width: 256px;" /></a>
+<ul class="simple">
+<li><p>Ou en faisant contact avec des pins coudés:</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/contact.jpg"><img alt="_images/contact.jpg" src="_images/contact.jpg" style="width: 256px;" /></a>
+<p><strong>Câble USB UART</strong></p>
+<ul class="simple">
+<li><p>RX0 &lt;— Taka TX</p></li>
+<li><p>TX0 —&gt; Taka RX</p></li>
+<li><p>GND &lt;–&gt; Taka GND</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/serial.jpg"><img alt="_images/serial.jpg" src="_images/serial.jpg" style="width: 256px;" /></a>
+<div class="section" id="minicom">
+<h3>Minicom<a class="headerlink" href="#minicom" title="Permalink to this headline">¶</a></h3>
+<p>Côté PC, le câble de debug UART est vu en tant que périphérique TTY USB.
+Si les fils ont été branchés sur le canal TX0/RX0, le périphérique
+côté PC sera en principe /dev/ttyUSB1.</p>
+<p>On peut vérifier en laissant tourner dmesg tout en branchant le câble de debug:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># dmesg -w
+[47587.720861] usb 1-2.4.2: new high-speed USB device number 29 using xhci_hcd
+[47587.861696] usb 1-2.4.2: New USB device found, idVendor=0403, idProduct=6011, bcdDevice= 8.00
+[47587.861703] usb 1-2.4.2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[47587.861706] usb 1-2.4.2: Product: Quad RS232-HS
+[47587.861710] usb 1-2.4.2: Manufacturer: FTDI
+[47587.871543] ftdi_sio 1-2.4.2:1.0: FTDI USB Serial Device converter detected
+[47587.871600] usb 1-2.4.2: Detected FT4232H
+[47587.871790] usb 1-2.4.2: FTDI USB Serial Device converter now attached to ttyUSB0
+[47587.872008] ftdi_sio 1-2.4.2:1.1: FTDI USB Serial Device converter detected
+[47587.872056] usb 1-2.4.2: Detected FT4232H
+[47587.872249] usb 1-2.4.2: FTDI USB Serial Device converter now attached to ttyUSB1
+[47587.872452] ftdi_sio 1-2.4.2:1.2: FTDI USB Serial Device converter detected
+[47587.872495] usb 1-2.4.2: Detected FT4232H
+[47587.872663] usb 1-2.4.2: FTDI USB Serial Device converter now attached to ttyUSB2
+[47587.872908] ftdi_sio 1-2.4.2:1.3: FTDI USB Serial Device converter detected
+[47587.872968] usb 1-2.4.2: Detected FT4232H
+[47587.873122] usb 1-2.4.2: FTDI USB Serial Device converter now attached to ttyUSB3
+</pre></div>
+</div>
+<p>Ici, on a:</p>
+<ul class="simple">
+<li><p><strong>ttyUSB0:</strong> JTAG (Inutilisé ici)</p></li>
+<li><p><strong>ttyUSB1:</strong> RX0/TX0 <strong>&lt;——</strong></p></li>
+<li><p><strong>ttyUSB2:</strong> RX1/TX1</p></li>
+<li><p><strong>ttyUSB3:</strong> RX2/TX2</p></li>
+</ul>
+<p>On s’y connecte avec minicom:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ minicom -s -D /dev/ttyUSB1
+
+-&gt; Serial port setup
+   -&gt; Hardware Flow Control : No
+</pre></div>
+</div>
+<p><strong>Console nuttx</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Welcome to minicom 2.8
+
+OPTIONS: I18n
+Compiled on Jan  9 2021, 12:42:45.
+Port /dev/ttyUSB1, 19:17:31
+
+Press CTRL-A Z for help on special keys
+
+ADE
+taka [5:100]
+
+NuttShell (NSH) NuttX-9.0.0
+nsh&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="telnet">
+<h2>Telnet<a class="headerlink" href="#telnet" title="Permalink to this headline">¶</a></h2>
+<p>Le prompt NuttX est aussi accessible en Telnet (Pas besoin de câble de debug
+mais plus complexe).</p>
+<ol class="arabic simple">
+<li><p>Brancher un câble Ethernet à Taka</p></li>
+<li><p>Redémarrer Taka</p></li>
+<li><p>Taka prend une adresse IP par DHCP</p></li>
+</ol>
+<p>Pour trouver l’IP de Taka:</p>
+<ul class="simple">
+<li><p>Soit par l’interface du routeur DHCP</p></li>
+<li><p>Soit en scannant le réseau (TCP/23): sudo nmap -sS -T5 -n -p 23 192.168.0.0/24</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ telnet 192.168.0.2
+
+NuttShell (NSH) NuttX-9.0.0
+nsh&gt; ps
+  PID PRI POLICY   TYPE    NPX STATE    EVENT     SIGMASK   STACK COMMAND
+    0   0 FIFO     Kthread N-- Ready              00000000 000000 Idle Task
+    1 224 FIFO     Kthread --- Waiting  Signal    00000000 002028 hpwork
+    2 100 FIFO     Kthread --- Ready              00000000 002028 lpwork
+    3 100 FIFO     Task    --- Waiting  Semaphore 00000000 002028 init
+    4 100 FIFO     Task    --- Waiting  Semaphore 00000000 002004 Telnet daemon 0x38003790
+    5 100 RR       Task    --- Waiting  Semaphore 00000000 131052 taka
+    7 100 FIFO     Task    --- Waiting  Signal    00000000 002020 NTP daemon
+    8 100 FIFO     Kthread --- Waiting  Semaphore 00000000 000996 telnet_io
+    9 100 FIFO     Task    --- Running            00000000 002020 Telnet session
+</pre></div>
+</div>
+<p>L’application Taka tourne en tâche de fond. Pour accéder au log de debug
+il faut la terminer et la relancer manuellement:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nsh&gt; kill -9 5
+nsh&gt; taka
+</pre></div>
+</div>
+</div>
+<div class="section" id="compilation">
+<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
+<p>Voir les explications ici: <a class="reference external" href="https://github.com/lambdaconcept/taka">https://github.com/lambdaconcept/taka</a></p>
+<p>Une fois le firmware compilé, programmer Taka avec le nouveau binaire
+comme expliqué dans la section <a class="reference internal" href="update.html"><span class="doc">Mise à jour</span></a>.</p>
+</div>
+<div class="section" id="architecture-nuttx">
+<h2>Architecture NuttX<a class="headerlink" href="#architecture-nuttx" title="Permalink to this headline">¶</a></h2>
+<p>NuttX est contenu dans 2 dossiers:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>nuttx:</strong> contient le système d’exploitation, les drivers et la platforme.</p></li>
+<li><p><strong>apps:</strong> contient les applications</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Plateforme Taka:</strong></p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/lambdaconcept/taka-nuttx/tree/master/boards/arm/stm32h7/taka">https://github.com/lambdaconcept/taka-nuttx/tree/master/boards/arm/stm32h7/taka</a></p>
+</div></blockquote>
+<p><strong>Application Taka:</strong></p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/tree/master/examples/taka">https://github.com/lambdaconcept/taka-apps/tree/master/examples/taka</a></p>
+</div></blockquote>
+<p><strong>Description des fichiers:</strong></p>
+<p>Ce dossier contient le point d’entrée de l’application Taka ainsi que
+les librairies et sous fonctions.</p>
+<p><strong>Boucle principale de l’application</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>taka_main.c         &lt;-- Application de production
+
+selftest_main.c     &lt;-- Application test usine
+</pre></div>
+</div>
+<p><strong>Fichiers relatifs à la carte à puce</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>apdu.c
+smartcard.c         &lt;--- Couches de communication avec la carte à puce
+
+arch.c              &lt;--- Lecture des données ARCH
+
+icao.c              &lt;--- Lecture des données ICAO
+icao_auth.c         &lt;--- Authentification passive ICAO
+icao_decode.c       &lt;--- Décodage TLV des containers ICAO
+
+libecc/             &lt;--- Librarie cryptographique pour authentification passive
+libpkcs7            &lt;--- Librarie de lecture de certificats PKCS#7
+</pre></div>
+</div>
+<p><strong>Fichiers relatifs à la gestion des empreintes digitales</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cam.c               &lt;--- Capture d&#39;une image caméra
+frame.c             &lt;--- Traitements de correction de déformations
+fingerjet/          &lt;--- Librairie d&#39;extraction des minutiaes
+minutiaes.c         &lt;--- Validation de la qualité des minutiaes et conversion de format
+</pre></div>
+</div>
+<p><strong>Suivi des opérations</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>led.c               &lt;--- Couleur des LEDs
+slcd.c              &lt;--- Affichage sur l&#39;écran LCD
+tone.c              &lt;--- Son du buzzer
+</pre></div>
+</div>
+<p><strong>Export des journaux</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>logs.c
+</pre></div>
+</div>
+<p><strong>API USB</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usb.c
+</pre></div>
+</div>
+<p><strong>Fichiers système</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>battery.c           &lt;--- Niveau de charge de la batterie
+buttons.c
+datetime.c          &lt;--- Date et heure UTC
+gpio.c
+network.c
+sdram.c
+taka.h              &lt;--- Gestion des erreurs système
+</pre></div>
+</div>
+<p><strong>Lecture sans contact NFC (Non implémenté)</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nfc.c
+libnfc/
+</pre></div>
+</div>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this headline">¶</a></h2>
+<p><strong>Version de Taka:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/taka.h#L6">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/taka.h#L6</a></p></li>
+</ul>
+</div></blockquote>
+<p><strong>Activer les prints de debug:</strong></p>
+<p>La plupart des fichiers ont un flags de debug qui permet d’avoir plus
+d’informations sur la console en cas dysfonctionnement, par exemple:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/taka_main.c#L44">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/taka_main.c#L44</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/arch.c#L14">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/arch.c#L14</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.c#L15">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.c#L15</a></p></li>
+</ul>
+</div></blockquote>
+<p><strong>Activer/Désactiver l’authentification passive:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.h#L9">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.h#L9</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="casing.html" class="btn btn-neutral float-left" title="Boîtier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LambdaConcept.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

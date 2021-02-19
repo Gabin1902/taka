@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API &mdash; LambdaConcept Taka  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Journaux" href="logs.html" />
+    <link rel="prev" title="Utilisation" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LambdaConcept Taka
+          
+
+          
+            
+            <img src="_static/taka.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Utilisation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usb">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemple-webusb">Exemple WebUSB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection">Connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lecture-des-fichiers-arch">Lecture des fichiers ARCH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lecture-des-fichiers-icao">Lecture des fichiers ICAO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lecture-des-journaux">Lecture des journaux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lecture-d-empreinte">Lecture d’empreinte</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#details-du-protocole-api-usb">Détails du protocole API USB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-version">Get Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-arch">Get ARCH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-icao">Get ICAO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-logs">Get Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-frame-raw">Get Frame Raw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-frame-morph">Get Frame Morph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-minutiaes">Get Minutiaes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Journaux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Mise à jour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casing.html">Boîtier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Développement</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LambdaConcept Taka</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="usb">
+<h2>USB<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h2>
+<p>Le connecteur USB situé à l’arrière du boitier Taka permet une connexion
+à un PC.</p>
+<img alt="_images/usb.png" src="_images/usb.png" />
+</div>
+<hr class="docutils" />
+<div class="section" id="exemple-webusb">
+<h2>Exemple WebUSB<a class="headerlink" href="#exemple-webusb" title="Permalink to this headline">¶</a></h2>
+<p>Un exemple d’utilisation de cette API est fournie dans une application
+WebUSB utilisable depuis un navigateur Web (Chrome).
+Cette application implémente l’ensemble des fonctionnalités fournies
+par l’API et peut donc servir de référence.</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>Voir le README <a class="reference external" href="https://github.com/lambdaconcept/taka/tree/master/utils/takaweb">https://github.com/lambdaconcept/taka/tree/master/utils/takaweb</a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(Linux) Install Udev rules
+==========================
+
+Write the rule in:
+
+/etc/udev/rules.d/52-taka.rules
+-------------------------------
+ACTION==&quot;add&quot;, SUBSYSTEM==&quot;usb&quot;, ATTRS{idVendor}==&quot;ffff&quot;, ATTRS{idProduct}==&quot;1234&quot;, MODE=&quot;0664&quot;, GROUP=&quot;plugdev&quot;
+-------------------------------
+
+Reload the rules:
+
+# udevadm control --reload-rules &amp;&amp; udevadm trigger
+
+(Windows) Install WinUSB driver
+===============================
+
+https://zadig.akeo.ie/
+
+Assign &quot;WinUSB&quot; driver to the device.
+
+Run the HTTP server for testing
+===============================
+
+$ python3 -m http.server
+
+In a Web browser (Chrome), connect to:
+
+http://127.0.0.1:8000/
+</pre></div>
+</div>
+</div>
+<div class="section" id="connection">
+<h3>Connection<a class="headerlink" href="#connection" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/connect.png"><img alt="_images/connect.png" src="_images/connect.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="lecture-des-fichiers-arch">
+<h3>Lecture des fichiers ARCH<a class="headerlink" href="#lecture-des-fichiers-arch" title="Permalink to this headline">¶</a></h3>
+<p>Lorsqu’une carte d’identité provisionnée avec l’application ARCH est insérée
+dans le boitier Taka, le contenu des fichiers ARCH peut être lu via l’API:</p>
+<a class="reference internal image-reference" href="_images/arch.png"><img alt="_images/arch.png" src="_images/arch.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="lecture-des-fichiers-icao">
+<h3>Lecture des fichiers ICAO<a class="headerlink" href="#lecture-des-fichiers-icao" title="Permalink to this headline">¶</a></h3>
+<p>Lorsqu’une carte d’identité provisionnée avec l’application ICAO (eTravel)
+est insérée dans le boitier Taka, le contenu des fichiers ICAO DG1 à DG16
+peut être lu via l’API:</p>
+<a class="reference internal image-reference" href="_images/icao.png"><img alt="_images/icao.png" src="_images/icao.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="lecture-des-journaux">
+<h3>Lecture des journaux<a class="headerlink" href="#lecture-des-journaux" title="Permalink to this headline">¶</a></h3>
+<p>A tout moment le contenu des logs stockés dans le boitier Taka (sur carte SD)
+peut être lu via l’API. La requête doit préciser la date voulue (1 jour à
+la fois). Voir la section <a class="reference internal" href="logs.html"><span class="doc">Journaux</span></a> pour le descriptif du format journal.</p>
+<a class="reference internal image-reference" href="_images/logs.png"><img alt="_images/logs.png" src="_images/logs.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="lecture-d-empreinte">
+<h3>Lecture d’empreinte<a class="headerlink" href="#lecture-d-empreinte" title="Permalink to this headline">¶</a></h3>
+<p>L’empreinte digitale capturée par la caméra optique est accessible
+par l’API. Seule la dernière image capturée est disponible, une nouvelle
+tentative écrasant l’image précédente.</p>
+<p>3 images sont récupérables:</p>
+<ul class="simple">
+<li><p><strong>Frame Raw:</strong> image reçue du capteur sans aucun traitement</p></li>
+<li><p><strong>Frame Morph:</strong> image après traitements de correction de déformations et d’aberration</p></li>
+<li><p><strong>Minutiaes:</strong> empreinte + représentation des minutiaes trouvés</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/frame.png"><img alt="_images/frame.png" src="_images/frame.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/minutiaes.png"><img alt="_images/minutiaes.png" src="_images/minutiaes.png" style="width: 600px;" /></a>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="details-du-protocole-api-usb">
+<h2>Détails du protocole API USB<a class="headerlink" href="#details-du-protocole-api-usb" title="Permalink to this headline">¶</a></h2>
+<p>Le protocole est implémenté sous la forme de commandes/réponses.
+Les commandes sont toujours émises par le host (PC), auxquelles le device
+(Taka) répond. Taka n’émet pas de messages USB sans être sollicité au
+préalable par une commande reçue du host.</p>
+<p><strong>Implémentation de référence:</strong> (Javascript) voir <a class="reference external" href="https://github.com/lambdaconcept/taka/blob/master/utils/takaweb/index.js">https://github.com/lambdaconcept/taka/blob/master/utils/takaweb/index.js</a></p>
+<p>Les commandes respectent le format suivant:</p>
+<ul class="simple">
+<li><p><strong>1er octet</strong> (obligatoire): numéro de la commande</p></li>
+<li><p><strong>octet suivants</strong> (optionnels): paramètres de la commande</p></li>
+</ul>
+<p>Liste des commandes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Nom</p></th>
+<th class="head"><p>Numéro</p></th>
+<th class="head"><p>Paramètres</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Get Version</p></td>
+<td><p>0x00</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Get ARCH</p></td>
+<td><p>0x01</p></td>
+<td><p>1 octet</p></td>
+</tr>
+<tr class="row-even"><td><p>Get ICAO</p></td>
+<td><p>0x02</p></td>
+<td><p>1 octet</p></td>
+</tr>
+<tr class="row-odd"><td><p>Get Logs</p></td>
+<td><p>0x03</p></td>
+<td><p>8 octets</p></td>
+</tr>
+<tr class="row-even"><td><p>Get Frame Raw</p></td>
+<td><p>0x04</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Get Frame Morph</p></td>
+<td><p>0x05</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Get Minutiaes</p></td>
+<td><p>0x06</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="get-version">
+<h3>Get Version<a class="headerlink" href="#get-version" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Lit la version actuelle du firmware programmé sur le boitier Taka.</p></li>
+<li><p><strong>Numéro:</strong> 0x00</p></li>
+<li><p><strong>Paramètres:</strong> Aucun</p></li>
+<li><p><strong>Réponse:</strong> La version sous forme de chaine de caractères (NULL terminated). Exemple: “v.0.96”</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="get-arch">
+<h3>Get ARCH<a class="headerlink" href="#get-arch" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Lit un fichier ARCH présent sur la carte d’identité. Le numéro du conteneur à lire est indiqué par un paramètre. Cette commande renvoie un paquet USB de taille vide (ZLP) lorsqu’aucune carte n’est insérée ou que le conteneur n’existe pas.</p></li>
+<li><p><strong>Numéro:</strong> 0x01</p></li>
+<li><p><strong>Paramètres:</strong> 1 octet, le numéro du fichier ARCH à lire (0x00-0x03)</p></li>
+<li><p><strong>Réponse:</strong> Renvoie le contenu du fichier ARCH demandé</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="get-icao">
+<h3>Get ICAO<a class="headerlink" href="#get-icao" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Lit un fichier ICAO présent sur la carte d’identité. Le numéro du conteneur à lire est indiqué par un paramètre. Cette commande renvoie un paquet USB de taille vide (ZLP) lorsqu’aucune carte n’est insérée ou que le conteneur n’existe pas.</p></li>
+<li><p><strong>Numéro:</strong> 0x02</p></li>
+<li><p><strong>Paramètres:</strong> 1 octet, le numéro du fichier DG à lire (0x00-0x0f)</p></li>
+<li><p><strong>Réponse:</strong> Renvoie le contenu du fichier ICAO demandé</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="get-logs">
+<h3>Get Logs<a class="headerlink" href="#get-logs" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Récupère les évènements ayant eu lieu le jour passé en paramètre.</p></li>
+<li><p><strong>Numéro:</strong> 0x03</p></li>
+<li><p><strong>Paramètres:</strong> 8 caractères ASCII au format “YYYYMMDD”, correspondant à la date du jour voulu</p></li>
+<li><p><strong>Réponse:</strong> Le contenu du fichier journal pour le jour demandé. Voir la section <a class="reference internal" href="logs.html"><span class="doc">Journaux</span></a> pour le descriptif du format journal.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="get-frame-raw">
+<h3>Get Frame Raw<a class="headerlink" href="#get-frame-raw" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Récupère la dernière image de l’empreinte capturée par la caméra. Il s’agit de l’image brute reçue du capteur sans aucun traitement.</p></li>
+<li><p><strong>Numéro:</strong> 0x04</p></li>
+<li><p><strong>Paramètres:</strong> Aucun</p></li>
+<li><p><strong>Réponse:</strong> L’image au format binaire (framebuffer 8bit grayscale, 640x380 px)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="get-frame-morph">
+<h3>Get Frame Morph<a class="headerlink" href="#get-frame-morph" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Récupère la dernière image de l’empreinte après les traitements de correction de déformations et d’aberration.</p></li>
+<li><p><strong>Numéro:</strong> 0x05</p></li>
+<li><p><strong>Paramètres:</strong> Aucun</p></li>
+<li><p><strong>Réponse:</strong> L’image au format binaire (framebuffer 8bit grayscale, 314x322 px)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="get-minutiaes">
+<h3>Get Minutiaes<a class="headerlink" href="#get-minutiaes" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description:</strong> Récupère l’ensemble des minutiaes extraits à partir de la dernière image capturée par la caméra. Cette commande renvoie un paquet USB de taille vide (ZLP) lorsque l’extraction à échoué (image de mauvaise qualité, doigt non présent, etc.)</p></li>
+<li><p><strong>Numéro:</strong> 0x06</p></li>
+<li><p><strong>Paramètres:</strong> Aucun</p></li>
+<li><p><strong>Réponse:</strong> Renvoie les minutiaes au format ISO/IEC 19794-2:2005 (Record Format, FMR)</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="logs.html" class="btn btn-neutral float-right" title="Journaux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="Utilisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LambdaConcept.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

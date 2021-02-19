@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Diagnostics &mdash; LambdaConcept Taka  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Boîtier" href="casing.html" />
+    <link rel="prev" title="Mise à jour" href="update.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LambdaConcept Taka
+          
+
+          
+            
+            <img src="_static/taka.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Journaux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Mise à jour</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagnostics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#erreurs-courantes">Erreurs courantes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#taka-ne-s-allume-pas">Taka ne s’allume pas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#le-doigt-n-est-pas-detecte">Le doigt n’est pas détecté</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#la-date-est-invalide">La date est invalide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#firmware-de-test">Firmware de test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#procedure-de-test">Procédure de test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ecran-lcd">1. Ecran LCD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#leds">2. LEDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#buzzer">3. Buzzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memoire-sdram">4. Mémoire SDRAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#carte-sd">5. Carte SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera">6. Caméra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb">7. USB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#empreinte-digitale">8. Empreinte digitale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#carte-a-puce-contact">9. Carte à puce (Contact)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reseau">10. Réseau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#date-heure">11. Date/Heure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batterie">12. Batterie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#succes">Succès</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="casing.html">Boîtier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Développement</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LambdaConcept Taka</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Diagnostics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="diagnostics">
+<h1>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="erreurs-courantes">
+<h2>Erreurs courantes<a class="headerlink" href="#erreurs-courantes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="taka-ne-s-allume-pas">
+<h3>Taka ne s’allume pas<a class="headerlink" href="#taka-ne-s-allume-pas" title="Permalink to this headline">¶</a></h3>
+<p>Taka ne s’allume pas ou s’éteint aussitôt.</p>
+<ul class="simple">
+<li><p>La batterie est déchargée, charger la batterie.</p></li>
+<li><p>Vérifier que le firmware est correctement programmé.</p></li>
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="le-doigt-n-est-pas-detecte">
+<h3>Le doigt n’est pas détecté<a class="headerlink" href="#le-doigt-n-est-pas-detecte" title="Permalink to this headline">¶</a></h3>
+<p>La présence du doigt n’est pas détectée.</p>
+<ul class="simple">
+<li><p>Nettoyer la vitre de la caméra optique.</p></li>
+<li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="la-date-est-invalide">
+<h3>La date est invalide<a class="headerlink" href="#la-date-est-invalide" title="Permalink to this headline">¶</a></h3>
+<p>Lorsque la batterie est débranchée, la date et l’heure doivent être
+resynchronisés via un serveur de temps (NTP). La synchronisation est
+automatique lorsque le boitier Taka est connecté au réseau (internet).
+(Adresse du serveur NTP: pool.ntp.org)</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="firmware-de-test">
+<h2>Firmware de test<a class="headerlink" href="#firmware-de-test" title="Permalink to this headline">¶</a></h2>
+<p>En cas d’autres dysfonctionnements de l’appareil Taka, il est possible de
+passer en mode diagnostic afin de déterminer l’origine du problème et de
+remplacer la pièce défectueuse le cas échéant.</p>
+<p>Pour cela, il faut:</p>
+<ul class="simple">
+<li><p><strong>1.</strong> Connecter Taka à un PC via un câble USB.</p></li>
+<li><p><strong>2.</strong> Connecter Taka au réseau via un câble Ethernet.</p></li>
+<li><p><strong>3.</strong> Programmer le firmware de test usine et redémarrer Taka.</p></li>
+<li><p><strong>4.</strong> Suivre la procédure affichée sur l’écran et utiliser l’application de
+test depuis un navigateur web.</p></li>
+</ul>
+<p>On commence par programmer Taka avec le firmware de test usine nommé
+“Taka Factory Test”, via le mode DFU et l’application WebDFU comme
+expliqué dans la section <a class="reference internal" href="update.html"><span class="doc">Mise à jour</span></a>.</p>
+<a class="reference internal image-reference" href="_images/factorytest.png"><img alt="_images/factorytest.png" src="_images/factorytest.png" style="width: 600px;" /></a>
+<p>Ensuite, redémarrer le boitier Taka.</p>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="procedure-de-test">
+<h2>Procédure de test<a class="headerlink" href="#procedure-de-test" title="Permalink to this headline">¶</a></h2>
+<p>La procédure de test se déroule en étapes, chaque étape vérifiant un élément
+du système. En cas de succès, le test passe à l’étape suivante. En cas d’échec,
+la même étape recommence en boucle. Les instructions à suivre s’affichent
+sur l’écran LCD. Certaines étapes sont automatisées, d’autres requièrent une
+intervention humaine (par exemple pour vérifier que les LEDs sont bien allumées).</p>
+<hr class="docutils" />
+<div class="section" id="ecran-lcd">
+<h3>1. Ecran LCD<a class="headerlink" href="#ecran-lcd" title="Permalink to this headline">¶</a></h3>
+<p>Dès le démarrage, l’écran affiche le message suivant:</p>
+<a class="reference internal image-reference" href="_images/boot.png"><img alt="_images/boot.png" src="_images/boot.png" style="width: 256px;" /></a>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Vérifier le bon affichage du message sur l’écran LCD</p></li>
+<li><p>Vérifier la présence du rétroéclairage</p></li>
+</ul>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier que Taka est allumé (Bouton On/Off)</p></li>
+<li><p>Vérifier que Taka est alimenté (Par USB)</p></li>
+<li><p>Vérifier ou remplacer l’<a class="reference internal" href="casing.html#refcasescreen"><span class="std std-ref">Module écran</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="leds">
+<h3>2. LEDs<a class="headerlink" href="#leds" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/led.png"><img alt="_images/led.png" src="_images/led.png" style="width: 256px;" /></a>
+<p>La LED caméra s’allume en bleu fixe et la LED située sur le dessus du boitier
+change successivement de couleur (Rouge, Vert, Bleu, Jaune, Magenta, Cyan).</p>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Vérifier l’allumage de la LED caméra en bleu</p></li>
+<li><p>Vérifier l’allumage de la LED boitier en multicolore</p></li>
+<li><p>Passer à l’étape suivante en touchant le capteur caméra.</p></li>
+</ul>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcaseled"><span class="std std-ref">Module LED/antenne</span></a></p></li>
+<li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="buzzer">
+<h3>3. Buzzer<a class="headerlink" href="#buzzer" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/buzzer.png"><img alt="_images/buzzer.png" src="_images/buzzer.png" style="width: 256px;" /></a>
+<p>Le buzzer émet des sons à intervalles réguliers.</p>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Vérifier que le buzzer émet bien un son.</p></li>
+<li><p>Passer à l’étape suivante en touchant le capteur caméra.</p></li>
+</ul>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="memoire-sdram">
+<h3>4. Mémoire SDRAM<a class="headerlink" href="#memoire-sdram" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/sdram.png"><img alt="_images/sdram.png" src="_images/sdram.png" style="width: 256px;" /></a>
+<p><strong>Test automatique:</strong> validation du bon fonctionnement du composant mémoire
+SDRAM présent sur la carte mère.</p>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="carte-sd">
+<h3>5. Carte SD<a class="headerlink" href="#carte-sd" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/sdcard.png"><img alt="_images/sdcard.png" src="_images/sdcard.png" style="width: 256px;" /></a>
+<p><strong>Test automatique:</strong> vérification de la présence et du bon fonctionnement
+de la carte micro SD. Si nécessaire, la carte sera automatiquement formatée
+avec un système de fichiers de type FAT32.</p>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer la Carte SD sur la <a class="reference internal" href="casing.html#refcasesd"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="camera">
+<h3>6. Caméra<a class="headerlink" href="#camera" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/camera.png"><img alt="_images/camera.png" src="_images/camera.png" style="width: 256px;" /></a>
+<p><strong>Test automatique:</strong> vérification de la présence et du bon fonctionnement
+du capteur caméra optique.</p>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="usb">
+<h3>7. USB<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/usb1.png"><img alt="_images/usb1.png" src="_images/usb1.png" style="width: 256px;" /></a>
+<p>Taka est en attente d’une connexion USB.</p>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Connecter Taka à un PC via un câble USB.</p></li>
+<li><p>Utiliser l’application web dédiée aux tests, nommée “takatest”,
+depuis un navigateur Web (Chrome)</p></li>
+<li><p>Cliquer sur “Connect”.</p></li>
+</ul>
+<p>Voir le README <a class="reference external" href="https://github.com/lambdaconcept/taka/tree/master/utils/takatest">https://github.com/lambdaconcept/taka/tree/master/utils/takatest</a></p>
+<a class="reference internal image-reference" href="_images/connect1.png"><img alt="_images/connect1.png" src="_images/connect1.png" style="width: 600px;" /></a>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer le câble USB.</p></li>
+<li><p>(Sous linux): vérifier les bonnes permissions udev pour webusb.</p></li>
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="empreinte-digitale">
+<h3>8. Empreinte digitale<a class="headerlink" href="#empreinte-digitale" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/fingerprint.png"><img alt="_images/fingerprint.png" src="_images/fingerprint.png" style="width: 256px;" /></a>
+<p>La caméra capture des images en boucle et les envoie au PC par l’intermédiaire
+de l’API USB.</p>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Placer le doigt sur le capteur.</p></li>
+<li><p>Vérifier dans l’interface web la bonne qualité de l’image.</p></li>
+<li><p>Le test passe automatiquement à l’étape suivante lorsque l’image
+est de qualité suffisante.</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/minutiaes1.png"><img alt="_images/minutiaes1.png" src="_images/minutiaes1.png" style="width: 600px;" /></a>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Nettoyer la vitre de la caméra optique.</p></li>
+<li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="carte-a-puce-contact">
+<h3>9. Carte à puce (Contact)<a class="headerlink" href="#carte-a-puce-contact" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/smartcard1.png"><img alt="_images/smartcard1.png" src="_images/smartcard1.png" style="width: 256px;" /></a>
+<p>Taka est en attente de l’insertion d’une carte à puce dans son connecteur
+pour initier une communication (ATR).</p>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Insérer une carte d’identité.</p></li>
+</ul>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier le sens d’insertion (puce vers soi)</p></li>
+<li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasesmartcard"><span class="std std-ref">Module carte à puce</span></a></p></li>
+</ul>
+<hr class="docutils" />
+</div>
+<div class="section" id="reseau">
+<h3>10. Réseau<a class="headerlink" href="#reseau" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/network.png"><img alt="_images/network.png" src="_images/network.png" style="width: 256px;" /></a>
+<p>Taka se connecte au réseau Ethernet et récupère une adresse IP par DHCP.</p>
+<p><strong>Action humaine:</strong></p>
+<ul class="simple">
+<li><p>Connecter Taka au réseau via un câble Ethernet.</p></li>
+</ul>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier ou remplacer le câble Ethernet.</p></li>
+<li><p>Vérifier la présence d’un serveur DHCP.</p></li>
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="date-heure">
+<h3>11. Date/Heure<a class="headerlink" href="#date-heure" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/datetime.png"><img alt="_images/datetime.png" src="_images/datetime.png" style="width: 256px;" /></a>
+<p><strong>Test automatique:</strong> configuration de la date et heure.</p>
+<p>La synchronisation est automatique lorsque le boitier Taka est connecté au
+réseau (internet). (Adresse du serveur NTP: pool.ntp.org)</p>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Vérifier la connexion internet.</p></li>
+<li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="batterie">
+<h3>12. Batterie<a class="headerlink" href="#batterie" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/battery1.png"><img alt="_images/battery1.png" src="_images/battery1.png" style="width: 256px;" /></a>
+<p><strong>Test automatique:</strong> test de charge de la batterie (par USB).</p>
+<p><strong>En cas d’erreur:</strong></p>
+<ul class="simple">
+<li><p>Connecter Taka au courant via un câble USB.</p></li>
+<li><p>Vérifier la présence de la batterie.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="succes">
+<h3>Succès<a class="headerlink" href="#succes" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/success.png"><img alt="_images/success.png" src="_images/success.png" style="width: 256px;" /></a>
+<p>Le test est terminé, le boitier Taka est complètement fonctionnel.
+Il faut maintenant le reprogrammer avec le firmware de production, comme
+expliqué dans la section <a class="reference internal" href="update.html"><span class="doc">Mise à jour</span></a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="casing.html" class="btn btn-neutral float-right" title="Boîtier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="update.html" class="btn btn-neutral float-left" title="Mise à jour" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LambdaConcept.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

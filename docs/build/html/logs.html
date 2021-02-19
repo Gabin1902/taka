@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Journaux &mdash; LambdaConcept Taka  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mise à jour" href="update.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LambdaConcept Taka
+          
+
+          
+            
+            <img src="_static/taka.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Journaux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#format">Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acces">Accès</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Mise à jour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casing.html">Boîtier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Développement</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LambdaConcept Taka</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Journaux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="journaux">
+<h1>Journaux<a class="headerlink" href="#journaux" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Chaque opération d’authentification d’un bénéficiaire est enregistrée
+avec la date et l’heure de passage (UTC) dans un journal stocké dans une
+mémoire de type carte micro SD, au format CSV.</p>
+<p>La carte SD contient un système de fichier de type FAT32, organisé de la
+manière suivante:</p>
+<ul class="simple">
+<li><p>Un dossier par année (2020, 2021, etc.)</p></li>
+<li><p>Pour chaque année, un fichier texte par jour (20210101.TXT, 20210102.TXT, etc.)</p></li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nsh&gt; ls LOGS/
+2020/
+2021/
+
+nsh&gt; ls LOGS/2021/
+20210128.TXT
+20210129.TXT
+20210202.TXT
+
+nsh&gt; cat LOGS/2021/20210202.TXT
+MARTIN&lt;&lt;ALFRED,000002345,90-07-10,H,R,V,2021-02-02T14:21:10.000,,
+DESCHAMPS&lt;&lt;MARCELLE,000009999,89-02-15,F,V,R,2021-02-02T14:33:02.000,,
+DUBOIS&lt;&lt;PIERRE,000001234,01-02-20,H,R,R,2021-02-02T14:39:57.000,,
+BIO&lt;&lt;MARIE,000005678,10-11-20,F,V,R,2021-02-02T14:40:26.000,,
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
+<p>Les logs sont stockés au format texte (CSV), et contiennent les colonnes suivantes:</p>
+<ul class="simple">
+<li><p><strong>Nom/Prénom:</strong> Format NOM&lt;&lt;PRENOM (Comme sur le MRZ de la carte)</p></li>
+<li><p><strong>Numéro de carte:</strong> Exemple: 000001234</p></li>
+<li><p><strong>Date de naissance:</strong> Format yy-MM-dd. (L’année est stockée seulement sur 2 chiffres, le format long 4 chiffres n’étant pas provisionné dans les cartes fournies)</p></li>
+<li><p><strong>Sexe:</strong> H = Homme, F = Femme</p></li>
+<li><p><strong>Authentification:</strong> Résultat de la vérification d’empreinte (V = Valide, R = Rejet)</p></li>
+<li><p><strong>Eligibilité:</strong> Résultat d’éligibilité à l’assurance maladie (V = Valide, R = Rejet)</p></li>
+<li><p><strong>Date de passage:</strong> Format yyyy-MM-dd’T’HH:mm:ss.000 (Heure UTC)</p></li>
+<li><p><strong>Statut:</strong> (Non implémenté, le statut de pauvreté étant chiffré)</p></li>
+<li><p><strong>Résidence:</strong> (Non implémenté, l’adresse n’étant pas provisionnée dans les cartes fournies)</p></li>
+</ul>
+<p>La fonction d’export des logs est visible ici:</p>
+<p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/logs.c">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/logs.c</a></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="acces">
+<h2>Accès<a class="headerlink" href="#acces" title="Permalink to this headline">¶</a></h2>
+<p>Les logs sont accessibles par l’API, voir <a class="reference internal" href="api.html#lecture-des-journaux"><span class="std std-ref">Lecture des journaux</span></a></p>
+<a class="reference internal image-reference" href="_images/logs.png"><img alt="_images/logs.png" src="_images/logs.png" style="width: 600px;" /></a>
+<p>Note: Bien sur les logs sont aussi accessibles en retirant la carte SD du
+boitier Taka.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="update.html" class="btn btn-neutral float-right" title="Mise à jour" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LambdaConcept.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
