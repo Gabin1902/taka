@@ -13,6 +13,7 @@ const USB_CMD_GETLOGS = 0x03;
 const USB_CMD_GETFRAME_RAW = 0x04;
 const USB_CMD_GETFRAME_MORPH = 0x05;
 const USB_CMD_GETMINUTIAES_FMR = 0x06;
+const USB_CMD_GETUNIQUEID = 0x07;
 
 const FRAME_SW = 640;
 const FRAME_SH = 380;
@@ -58,6 +59,7 @@ function reset() {
   camContentDrop();
   logsTableDrop();
   takaVersionDrop();
+  takaUniqueIDDrop();
 
   hide();
 };
@@ -85,6 +87,12 @@ connectButton.onclick = async () => {
 
 const getVersion = async () => {
   _cmd = USB_CMD_GETVERSION;
+  const data = new Uint8Array([_cmd]);
+  await _device.transferOut(EP_OUT, data);
+};
+
+const getUniqueID = async () => {
+  _cmd = USB_CMD_GETUNIQUEID;
   const data = new Uint8Array([_cmd]);
   await _device.transferOut(EP_OUT, data);
 };
@@ -162,6 +170,9 @@ const listen = async () => {
 
   if (_cmd == USB_CMD_GETVERSION) {
     takaVersionSet(content);
+    getUniqueID();
+  } else if (_cmd == USB_CMD_GETUNIQUEID) {
+    takaUniqueIDSet(result.data.buffer);
   } else if (_cmd == USB_CMD_GETARCH) {
     archContentAppend(_fnum, content);
     if (last) {
@@ -210,6 +221,14 @@ function takaVersionDrop() {
 
 function takaVersionSet(version) {
   takaVersion.innerText = "Connecté à Taka " + version;
+};
+
+function takaUniqueIDDrop() {
+  takaUniqueID.innerText = "";
+};
+
+function takaUniqueIDSet(uniqueid) {
+  takaUniqueID.innerText = "Taka Unique ID: " + buf2hex(uniqueid);
 };
 
 let _logsBuffer;
