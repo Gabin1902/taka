@@ -56,8 +56,34 @@ EXTRA_LIBS="$(realpath ../apps/examples/taka/libecc/build/libsign.a) $(realpath 
 
 dfu-util -d 0483:df11 -a 0 -D nuttx.bin --dfuse-address 0x08000000
 
+Hardware Changelog
+==================
+
+R05
+---
+
+* Add GPIO revision straps: REV_[2:0] == '001' (PJ9/PK0/PK1)
+* Replace battery charger chip (MCP73834T -> SGM41511)
+    STAT1 -> BAT_PG (PI1)
+    STAT2 -> BAT_STAT (PA15)
+    BAT_I2C shared with LCD_I2C
+* 5V regulator enabled via software (EN_5V on PC6)
+* Reset for NFC and ETH controlled from software
+    ETH_RST on PI14
+    RSTPD_N on PI15
+
 Changelog
 =========
+
+taka.0.98
+---------
+
+* Support for Taka hardware R05
+
+taka.0.97
+---------
+
+* USB API: new command to get the board unique ID
 
 taka.0.96
 ---------
