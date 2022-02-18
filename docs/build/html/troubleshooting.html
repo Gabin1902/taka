@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Diagnostics &mdash; LambdaConcept Taka  documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
   
@@ -32,6 +35,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -90,7 +94,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+              <p class="caption" role="heading"><span class="caption-text">DOCUMENTATION</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
@@ -191,12 +195,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="diagnostics">
+  <section id="diagnostics">
 <h1>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<div class="section" id="erreurs-courantes">
+<section id="erreurs-courantes">
 <h2>Erreurs courantes<a class="headerlink" href="#erreurs-courantes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="taka-ne-s-allume-pas">
+<section id="taka-ne-s-allume-pas">
 <h3>Taka ne s’allume pas<a class="headerlink" href="#taka-ne-s-allume-pas" title="Permalink to this headline">¶</a></h3>
 <p>Taka ne s’allume pas ou s’éteint aussitôt.</p>
 <ul class="simple">
@@ -204,25 +208,25 @@
 <li><p>Vérifier que le firmware est correctement programmé.</p></li>
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="le-doigt-n-est-pas-detecte">
+</section>
+<section id="le-doigt-n-est-pas-detecte">
 <h3>Le doigt n’est pas détecté<a class="headerlink" href="#le-doigt-n-est-pas-detecte" title="Permalink to this headline">¶</a></h3>
 <p>La présence du doigt n’est pas détectée.</p>
 <ul class="simple">
 <li><p>Nettoyer la vitre de la caméra optique.</p></li>
 <li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="la-date-est-invalide">
+</section>
+<section id="la-date-est-invalide">
 <h3>La date est invalide<a class="headerlink" href="#la-date-est-invalide" title="Permalink to this headline">¶</a></h3>
 <p>Lorsque la batterie est débranchée, la date et l’heure doivent être
 resynchronisés via un serveur de temps (NTP). La synchronisation est
 automatique lorsque le boitier Taka est connecté au réseau (internet).
 (Adresse du serveur NTP: pool.ntp.org)</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="firmware-de-test">
+<section id="firmware-de-test">
 <h2>Firmware de test<a class="headerlink" href="#firmware-de-test" title="Permalink to this headline">¶</a></h2>
 <p>En cas d’autres dysfonctionnements de l’appareil Taka, il est possible de
 passer en mode diagnostic afin de déterminer l’origine du problème et de
@@ -244,9 +248,9 @@ expliqué dans la section <a class="reference internal" href="update.html"><span
 <ul class="simple">
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="procedure-de-test">
+<section id="procedure-de-test">
 <h2>Procédure de test<a class="headerlink" href="#procedure-de-test" title="Permalink to this headline">¶</a></h2>
 <p>La procédure de test se déroule en étapes, chaque étape vérifiant un élément
 du système. En cas de succès, le test passe à l’étape suivante. En cas d’échec,
@@ -254,7 +258,7 @@ la même étape recommence en boucle. Les instructions à suivre s’affichent
 sur l’écran LCD. Certaines étapes sont automatisées, d’autres requièrent une
 intervention humaine (par exemple pour vérifier que les LEDs sont bien allumées).</p>
 <hr class="docutils" />
-<div class="section" id="ecran-lcd">
+<section id="ecran-lcd">
 <h3>1. Ecran LCD<a class="headerlink" href="#ecran-lcd" title="Permalink to this headline">¶</a></h3>
 <p>Dès le démarrage, l’écran affiche le message suivant:</p>
 <a class="reference internal image-reference" href="_images/boot.png"><img alt="_images/boot.png" src="_images/boot.png" style="width: 256px;" /></a>
@@ -269,9 +273,9 @@ intervention humaine (par exemple pour vérifier que les LEDs sont bien allumée
 <li><p>Vérifier que Taka est alimenté (Par USB)</p></li>
 <li><p>Vérifier ou remplacer l’<a class="reference internal" href="casing.html#refcasescreen"><span class="std std-ref">Module écran</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="leds">
+<section id="leds">
 <h3>2. LEDs<a class="headerlink" href="#leds" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/led.png"><img alt="_images/led.png" src="_images/led.png" style="width: 256px;" /></a>
 <p>La LED caméra s’allume en bleu fixe et la LED située sur le dessus du boitier
@@ -287,9 +291,9 @@ change successivement de couleur (Rouge, Vert, Bleu, Jaune, Magenta, Cyan).</p>
 <li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcaseled"><span class="std std-ref">Module LED/antenne</span></a></p></li>
 <li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="buzzer">
+<section id="buzzer">
 <h3>3. Buzzer<a class="headerlink" href="#buzzer" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/buzzer.png"><img alt="_images/buzzer.png" src="_images/buzzer.png" style="width: 256px;" /></a>
 <p>Le buzzer émet des sons à intervalles réguliers.</p>
@@ -302,9 +306,9 @@ change successivement de couleur (Rouge, Vert, Bleu, Jaune, Magenta, Cyan).</p>
 <ul class="simple">
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="memoire-sdram">
+<section id="memoire-sdram">
 <h3>4. Mémoire SDRAM<a class="headerlink" href="#memoire-sdram" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/sdram.png"><img alt="_images/sdram.png" src="_images/sdram.png" style="width: 256px;" /></a>
 <p><strong>Test automatique:</strong> validation du bon fonctionnement du composant mémoire
@@ -313,9 +317,9 @@ SDRAM présent sur la carte mère.</p>
 <ul class="simple">
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="carte-sd">
+<section id="carte-sd">
 <h3>5. Carte SD<a class="headerlink" href="#carte-sd" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/sdcard.png"><img alt="_images/sdcard.png" src="_images/sdcard.png" style="width: 256px;" /></a>
 <p><strong>Test automatique:</strong> vérification de la présence et du bon fonctionnement
@@ -325,9 +329,9 @@ avec un système de fichiers de type FAT32.</p>
 <ul class="simple">
 <li><p>Vérifier ou remplacer la Carte SD sur la <a class="reference internal" href="casing.html#refcasesd"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="camera">
+<section id="camera">
 <h3>6. Caméra<a class="headerlink" href="#camera" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/camera.png"><img alt="_images/camera.png" src="_images/camera.png" style="width: 256px;" /></a>
 <p><strong>Test automatique:</strong> vérification de la présence et du bon fonctionnement
@@ -336,9 +340,9 @@ du capteur caméra optique.</p>
 <ul class="simple">
 <li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="usb">
+<section id="usb">
 <h3>7. USB<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/usb1.png"><img alt="_images/usb1.png" src="_images/usb1.png" style="width: 256px;" /></a>
 <p>Taka est en attente d’une connexion USB.</p>
@@ -357,9 +361,9 @@ depuis un navigateur Web (Chrome)</p></li>
 <li><p>(Sous linux): vérifier les bonnes permissions udev pour webusb.</p></li>
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="empreinte-digitale">
+<section id="empreinte-digitale">
 <h3>8. Empreinte digitale<a class="headerlink" href="#empreinte-digitale" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/fingerprint.png"><img alt="_images/fingerprint.png" src="_images/fingerprint.png" style="width: 256px;" /></a>
 <p>La caméra capture des images en boucle et les envoie au PC par l’intermédiaire
@@ -377,9 +381,9 @@ est de qualité suffisante.</p></li>
 <li><p>Nettoyer la vitre de la caméra optique.</p></li>
 <li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasecamera"><span class="std std-ref">Module caméra/touch</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="carte-a-puce-contact">
+<section id="carte-a-puce-contact">
 <h3>9. Carte à puce (Contact)<a class="headerlink" href="#carte-a-puce-contact" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/smartcard1.png"><img alt="_images/smartcard1.png" src="_images/smartcard1.png" style="width: 256px;" /></a>
 <p>Taka est en attente de l’insertion d’une carte à puce dans son connecteur
@@ -394,8 +398,8 @@ pour initier une communication (ATR).</p>
 <li><p>Vérifier ou remplacer le <a class="reference internal" href="casing.html#refcasesmartcard"><span class="std std-ref">Module carte à puce</span></a></p></li>
 </ul>
 <hr class="docutils" />
-</div>
-<div class="section" id="reseau">
+</section>
+<section id="reseau">
 <h3>10. Réseau<a class="headerlink" href="#reseau" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/network.png"><img alt="_images/network.png" src="_images/network.png" style="width: 256px;" /></a>
 <p>Taka se connecte au réseau Ethernet et récupère une adresse IP par DHCP.</p>
@@ -409,9 +413,9 @@ pour initier une communication (ATR).</p>
 <li><p>Vérifier la présence d’un serveur DHCP.</p></li>
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="date-heure">
+<section id="date-heure">
 <h3>11. Date/Heure<a class="headerlink" href="#date-heure" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/datetime.png"><img alt="_images/datetime.png" src="_images/datetime.png" style="width: 256px;" /></a>
 <p><strong>Test automatique:</strong> configuration de la date et heure.</p>
@@ -422,9 +426,9 @@ réseau (internet). (Adresse du serveur NTP: pool.ntp.org)</p>
 <li><p>Vérifier la connexion internet.</p></li>
 <li><p>Vérifier ou remplacer la <a class="reference internal" href="casing.html#refcasemotherboard"><span class="std std-ref">Carte mère</span></a></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="batterie">
+<section id="batterie">
 <h3>12. Batterie<a class="headerlink" href="#batterie" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/battery1.png"><img alt="_images/battery1.png" src="_images/battery1.png" style="width: 256px;" /></a>
 <p><strong>Test automatique:</strong> test de charge de la batterie (par USB).</p>
@@ -433,17 +437,17 @@ réseau (internet). (Adresse du serveur NTP: pool.ntp.org)</p>
 <li><p>Connecter Taka au courant via un câble USB.</p></li>
 <li><p>Vérifier la présence de la batterie.</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="succes">
+<section id="succes">
 <h3>Succès<a class="headerlink" href="#succes" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/success.png"><img alt="_images/success.png" src="_images/success.png" style="width: 256px;" /></a>
 <p>Le test est terminé, le boitier Taka est complètement fonctionnel.
 Il faut maintenant le reprogrammer avec le firmware de production, comme
 expliqué dans la section <a class="reference internal" href="update.html"><span class="doc">Mise à jour</span></a>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

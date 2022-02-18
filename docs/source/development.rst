@@ -240,3 +240,40 @@ d'informations sur la console en cas dysfonctionnement, par exemple:
 **Activer/Désactiver l'authentification passive:**
 
     * https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.h#L9
+
+Changement des APDU
+-------------------
+
+**Adaptation des APDU ARCH pour supporter differentes cartes:**
+
+    * https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/apdu.c
+
+**Construction des APDU:**
+
+1. APDU_ARCH_SELECT_APP
+
+    * https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/apdu.c#L136
+
+Il modifier APDU_ARCH_SELECT_APP pour changer l'application ID et ajuster la longueur::
+
+    0x00, 0xa4, 0x04, 0x04,     (L'entête reste inchangée)
+    0x0f,                       (Longueur de l'App ID = 15 octets)
+    0xE8, 0x28, 0xBD, 0x08, 0x0F, 0xA0, 0x00, 0x00, 0x03, 0x63, 0x4D, 0x52, 0x4F, 0x41, 0x44,       (App ID, 15 octets)
+    0x00                        (Octet final)
+
+2. APDU_ARCH_SELECT_FILE
+
+    * https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/apdu.c#L142
+
+Il modifier APDU_ARCH_SELECT_FILE pour changer le file ID et ajuster la longueur::
+
+    0x00, 0xa4, 0x02, 0x04,     (L'entête reste inchangée)
+    0x02,                       (Longueur du File ID = 2 octets)
+    0xC0, 0x01,                 (File ID, 2 octets)
+    0x00                        (Octet final)
+
+3. APDU_ARCH_READ_FILE
+
+    * https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/apdu.c#L146
+
+Pas de changement c'est une commande standard "READ BINARY".

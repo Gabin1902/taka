@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Fonctionnalités &mdash; LambdaConcept Taka  documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
   
@@ -32,6 +35,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -90,7 +94,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+              <p class="caption" role="heading"><span class="caption-text">DOCUMENTATION</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Fonctionnalités</a><ul>
@@ -177,10 +181,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fonctionnalites">
+  <section id="fonctionnalites">
 <h1>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<div class="section" id="lecteur-carte-a-puce">
+<section id="lecteur-carte-a-puce">
 <h2>Lecteur carte à puce<a class="headerlink" href="#lecteur-carte-a-puce" title="Permalink to this headline">¶</a></h2>
 <p>La lecture de la carte d’identité se fait par contact (insertion de la carte
 verticalement dans le boitier Taka).</p>
@@ -199,9 +203,9 @@ verticalement dans le boitier Taka).</p>
 </div></blockquote>
 </li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="capteur-d-empreinte-digitale">
+<section id="capteur-d-empreinte-digitale">
 <h2>Capteur d’empreinte digitale<a class="headerlink" href="#capteur-d-empreinte-digitale" title="Permalink to this headline">¶</a></h2>
 <p>La lecture de l’empreinte digitale du bénéficiaire se fait par un capteur
 optique situé à l’avant du boitier Taka et sur lequel la personne place
@@ -213,9 +217,9 @@ son doigt.</p>
 <li><p><strong>Résolution:</strong> 640x480 pixels &#64;1000 dpi</p></li>
 <li><p><strong>Eclairage:</strong> 1 LED Bleue + 2 LED Infrarouges</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="authentification">
+<section id="authentification">
 <h2>Authentification<a class="headerlink" href="#authentification" title="Permalink to this headline">¶</a></h2>
 <p>Les minutiaes sont extraits de l’image de l’empreinte digitale via une
 librairie satisfaisant aux critères de performance et de qualité spécifiés par
@@ -224,9 +228,9 @@ MINEX, puis sont envoyés à la carte d’identité pour vérification.</p>
 <li><p><strong>Type d’authentification:</strong> Match on Card</p></li>
 <li><p><strong>Standard de l’empreinte:</strong> ISO/IEC 19794-2:2005</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="ecran-lcd">
+<section id="ecran-lcd">
 <h2>Ecran LCD<a class="headerlink" href="#ecran-lcd" title="Permalink to this headline">¶</a></h2>
 <p>Le boitier Taka est pourvu d’un écran LCD rétroéclairé permettant d’afficher
 des instructions pour l’utilisateur et de suivre les opérations en cours.</p>
@@ -234,9 +238,9 @@ des instructions pour l’utilisateur et de suivre les opérations en cours.</p>
 <li><p><strong>Affichage:</strong> Ecran LCD 2x16 caractères</p></li>
 <li><p><strong>Rétroéclairage</strong></p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="indicateurs">
+<section id="indicateurs">
 <h2>Indicateurs<a class="headerlink" href="#indicateurs" title="Permalink to this headline">¶</a></h2>
 <p>Le résultat de l’authentification (succès en cas de concordance des empreintes,
 ou échec en cas de non concordance) est indiqué sur le boitier Taka
@@ -245,9 +249,9 @@ via un système lumineux et sonore.</p>
 <li><p><strong>Indicateur lumineux:</strong> LED RGB (7 couleurs)</p></li>
 <li><p><strong>Indicateur sonore:</strong> Buzzer</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="journaux">
+<section id="journaux">
 <h2>Journaux<a class="headerlink" href="#journaux" title="Permalink to this headline">¶</a></h2>
 <p>Chaque opération d’authentification et son résultat sont enregistrés
 dans un journal. Ce journal peut être lu via l’API USB (ou en retirant
@@ -256,9 +260,9 @@ la carte SD du boitier)</p>
 <li><p><strong>Stockage:</strong> Carte micro SD (1 GB)</p></li>
 <li><p><strong>Système de fichier:</strong> FAT32</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="batterie">
+<section id="batterie">
 <h2>Batterie<a class="headerlink" href="#batterie" title="Permalink to this headline">¶</a></h2>
 <p>Le boitier Taka est autonome et peut fonctionner sur batterie.</p>
 <ul class="simple">
@@ -266,9 +270,9 @@ la carte SD du boitier)</p>
 <li><p><strong>Chargement:</strong> Via câble USB (5V)</p></li>
 <li><p><strong>Type de batterie:</strong> Li-ion 1 cellule 3.7V 10000mAh</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="usb">
+<section id="usb">
 <h2>USB<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h2>
 <p>Le connecteur USB situé à l’arrière du boitier Taka permet une connexion
 à un PC.</p>
@@ -283,17 +287,17 @@ la carte SD du boitier)</p>
 <li><p><strong>Journaux:</strong> logs des tentatives d’authentification et résultats</p></li>
 <li><p><strong>Image et minutiaes</strong> de l’empreinte digitale en cours de traitement</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="reseau-ethernet">
+<section id="reseau-ethernet">
 <h2>Réseau (Ethernet)<a class="headerlink" href="#reseau-ethernet" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Connecteur:</strong> Ethernet RJ45 10/100 Mbits</p></li>
 <li><p><strong>API réseau:</strong> Non implémentée</p></li>
 <li><p><strong>Serveur Telnet</strong> (Debug ou développement)</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

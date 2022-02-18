@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Utilisation &mdash; LambdaConcept Taka  documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
 
   
@@ -32,6 +35,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -90,7 +94,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">DOCUMENTATION</span></p>
+              <p class="caption" role="heading"><span class="caption-text">DOCUMENTATION</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Fonctionnalités</a></li>
@@ -174,10 +178,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utilisation">
+  <section id="utilisation">
 <h1>Utilisation<a class="headerlink" href="#utilisation" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<div class="section" id="demarrage">
+<section id="demarrage">
 <h2>Démarrage<a class="headerlink" href="#demarrage" title="Permalink to this headline">¶</a></h2>
 <p>Tout d’abord, allumer le boitier Taka en actionnant l’interrupteur On/Off
 situé sur le côté droit.</p>
@@ -193,8 +197,8 @@ le bon fonctionnement du système. Notamment:</p>
 s’affiche sur l’écran. On se réfèrera alors à la section <a class="reference internal" href="troubleshooting.html"><span class="doc">Diagnostics</span></a>.</p>
 <p>Le scénario d’authentification d’un bénéficiaire se déroule comme suit:</p>
 <hr class="docutils" />
-</div>
-<div class="section" id="insertion-de-la-carte-d-identite">
+</section>
+<section id="insertion-de-la-carte-d-identite">
 <span id="refstep1"></span><h2>1. Insertion de la carte d’identité<a class="headerlink" href="#insertion-de-la-carte-d-identite" title="Permalink to this headline">¶</a></h2>
 <p>Le boitier Taka affiche le message <code class="docutils literal notranslate"><span class="pre">INSEREZ</span> <span class="pre">LA</span> <span class="pre">CARTE</span></code> et attend.
 Les LEDs sont éteintes.</p>
@@ -202,8 +206,8 @@ Les LEDs sont éteintes.</p>
 <p>Lorsque l’insertion d’une carte est détectée, la machine passe à l’étape
 <a class="reference internal" href="#refstep2"><span class="std std-ref">2. Lecture de la carte</span></a>.</p>
 <hr class="docutils" />
-</div>
-<div class="section" id="lecture-de-la-carte">
+</section>
+<section id="lecture-de-la-carte">
 <span id="refstep2"></span><h2>2. Lecture de la carte<a class="headerlink" href="#lecture-de-la-carte" title="Permalink to this headline">¶</a></h2>
 <p>Affichage du message <code class="docutils literal notranslate"><span class="pre">LECTURE</span> <span class="pre">EN</span> <span class="pre">COURS</span></code>.
 Les LEDs restent éteintes.</p>
@@ -230,8 +234,8 @@ provisionnée, carte non authentique, etc),
 l’erreur correspondante est affichée sur l’écran, la LED devient rouge et
 demande le retrait de la carte. Retour à l’étape <a class="reference internal" href="#refstep1"><span class="std std-ref">1. Insertion de la carte d’identité</span></a>.</p>
 <hr class="docutils" />
-</div>
-<div class="section" id="capture-de-l-empreinte-digitale">
+</section>
+<section id="capture-de-l-empreinte-digitale">
 <span id="refstep3"></span><h2>3. Capture de l’empreinte digitale<a class="headerlink" href="#capture-de-l-empreinte-digitale" title="Permalink to this headline">¶</a></h2>
 <p>Affichage du message <code class="docutils literal notranslate"><span class="pre">POSEZ</span> <span class="pre">LE</span> <span class="pre">DOIGT</span> <span class="pre">INDEX</span> <span class="pre">DROIT</span></code>.
 La LED RGB devient bleue, et la LED caméra s’allume aussi en bleu pour inciter
@@ -251,8 +255,8 @@ repositionner son doigt correctement. Le processus recommence l’étape
 <a class="reference internal" href="#refstep3"><span class="std std-ref">3. Capture de l’empreinte digitale</span></a>.</p>
 <p>Si l’image est de bonne qualité, la machine passe à l’étape <a class="reference internal" href="#refstep4"><span class="std std-ref">4. Vérification des minutiaes</span></a>.</p>
 <hr class="docutils" />
-</div>
-<div class="section" id="verification-des-minutiaes">
+</section>
+<section id="verification-des-minutiaes">
 <span id="refstep4"></span><h2>4. Vérification des minutiaes<a class="headerlink" href="#verification-des-minutiaes" title="Permalink to this headline">¶</a></h2>
 <p>Les minutiaes sont convertis au format Card-Compact (ISO/IEC 19794-2:2005)
 et soumis à la carte d’identité pour vérification, via l’application
@@ -280,8 +284,8 @@ est alors affiché sur l’écran.</p>
 <p>Dans tous les cas (authentifié ou non, éligible ou non), la tentative est
 logguée. Passage à l’étape <a class="reference internal" href="#refstep5"><span class="std std-ref">5. Journalisation des évenements</span></a>.</p>
 <hr class="docutils" />
-</div>
-<div class="section" id="journalisation-des-evenements">
+</section>
+<section id="journalisation-des-evenements">
 <span id="refstep5"></span><h2>5. Journalisation des évenements<a class="headerlink" href="#journalisation-des-evenements" title="Permalink to this headline">¶</a></h2>
 <p>L’opération d’authentification et son résultat sont enregistrés,
 avec l’identité de la personne, la date et l’heure de passage, dans un
@@ -298,8 +302,8 @@ recommence alors à l’étape <a class="reference internal" href="#refstep1"><s
 </ul>
 <p>La procédure retourne automatiquement l’étape <a class="reference internal" href="#refstep3"><span class="std std-ref">3. Capture de l’empreinte digitale</span></a> après quelques
 secondes pour un nouvel essai du même utilisateur.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
