@@ -20,10 +20,9 @@ int main(int argc, char **argv)
       return -1;
   }
 
-  fscanf(in, "%c%c%c", &x, &y, &z);
   do {
-      printf("x: %d\ty:%d\ttype:%d\tangle:%d\n", x, y, z >> 6, z & 0x3f);
       fscanf(in, "%c%c%c", &x, &y, &z);
+      printf("x: %d\ty:%d\ttype:%d\tangle:%d\n", x, y, z >> 6, z & 0x3f);
   } while (!feof(in));
 
   fclose(in);

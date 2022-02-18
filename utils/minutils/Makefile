@@ -17,11 +17,17 @@ dumpist: dumpist.c
 dumpcompact: dumpcompact.c
 	$(CC) $(CFLAGS) $(INC) src/*.c $@.c -o $@
 
+sortcompact: sortcompact.c src/minutiaes.c
+	$(CC) $(CFLAGS) $(INC) src/*.c $@.c -o $@
+
 submit: submit.c
 	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
 
 submit_translate: submit_translate.c
 	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
+
+genapdu: genapdu.c src/apdu.c
+	$(CC) $(CFLAGS) $(INC) src/*.c $@.c -o $@
 
 run:
 	find ../samples/ -name "*.png" | while read name ; do echo $${name%.*}; convert $${name%.*}.png $${name%.*}.pgm; done

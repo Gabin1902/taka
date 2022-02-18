@@ -1,6 +1,8 @@
-extract
 compact
-dumpist
 dumpcompact
+dumpist
+extract
+genapdu
+sortcompact
 submit
 submit_translate
