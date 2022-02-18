@@ -158,6 +158,7 @@ logsButton.onclick = async () => {
 const listen = async () => {
   const result = await _device.transferIn(EP_IN, EP_BUFFERSIZE);
   const length = result.data.byteLength;
+  // const last = ((length == 0) || ((length % EP_BULKSIZE) > 0));
   const last = ((length == 0) || (length < EP_BUFFERSIZE));
   const decoder = new TextDecoder();
   const message = decoder.decode(result.data);

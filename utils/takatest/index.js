@@ -181,7 +181,7 @@ function camCanvasDrawMinutiaes(canvas, pts, zoom) {
 
   pts.forEach(p => {
 
-    if (p.type != 0) {
+    // if (p.type != 0) {
       let alpha = p.angle * (Math.PI / 180.0);
       let dx = Math.cos(alpha) * 10;
       let dy = -Math.sin(alpha) * 10;
@@ -192,7 +192,12 @@ function camCanvasDrawMinutiaes(canvas, pts, zoom) {
       green = ("00" + green.toString(16)).substr(-2);
       let blue = Math.floor((100-q) * 2.55);
       blue = ("00" + blue.toString(16)).substr(-2);
-      let color = "#00" + green + blue;
+
+      if (p.type != 0) {
+      var color = "#00" + green + blue;
+      } else {
+      var color = "#ff" + green + blue;
+      }
 
       ctx.fillStyle = color;
       ctx.fillRect((p.x-1)*zoom, (p.y-1)*zoom, 3*zoom, 3*zoom);
@@ -205,10 +210,10 @@ function camCanvasDrawMinutiaes(canvas, pts, zoom) {
       ctx.stroke();
 
       total += 1;
-      if (total >= 35) {
-        return;
-      }
-    }
+      // if (total >= 35) {
+      //   return;
+      // }
+    // }
   })
 }
 
