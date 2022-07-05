@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "moc.h"
 #include "apdu.h"
 
 void myprint(uint8_t *buffer, int outlen)
@@ -58,13 +59,13 @@ int main(int argc, char *argv[])
     };
     unsigned int _dermalog_carte1_Finger_Index_19794_2_type6_35pts_bin_len = 105;
 
-    apdu_moc_select_app(buffer, &outlen);
+    apdu_moc_select_app(buffer, &outlen, MOC_CARDTYPE_DERMALOG);
     printf("Select app:\n");
     myprint(buffer, outlen);
 
-    // apdu_moc_verify(_samples_agbokou_5130159536_2_myok, _samples_agbokou_5130159536_2_myok_len, buffer, &outlen);
-    // apdu_moc_verify(_dermalog_carte1_Finger_Index_19794_2_type6_tpl, _dermalog_carte1_Finger_Index_19794_2_type6_tpl_len, buffer, &outlen);
-    apdu_moc_verify(_dermalog_carte1_Finger_Index_19794_2_type6_35pts_bin, _dermalog_carte1_Finger_Index_19794_2_type6_35pts_bin_len, buffer, &outlen);
+    // apdu_moc_verify(_samples_agbokou_5130159536_2_myok, _samples_agbokou_5130159536_2_myok_len, buffer, &outlen, MOC_CARDTYPE_IDEMIA);
+    // apdu_moc_verify(_dermalog_carte1_Finger_Index_19794_2_type6_tpl, _dermalog_carte1_Finger_Index_19794_2_type6_tpl_len, buffer, &outlen, MOC_CARDTYPE_DERMALOG);
+    apdu_moc_verify(_dermalog_carte1_Finger_Index_19794_2_type6_35pts_bin, _dermalog_carte1_Finger_Index_19794_2_type6_35pts_bin_len, buffer, &outlen, MOC_CARDTYPE_DERMALOG);
 
     printf("Verify:\n");
     myprint(buffer, outlen);

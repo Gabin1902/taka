@@ -26,7 +26,7 @@ submit: submit.c
 submit_translate: submit_translate.c
 	$(CC) $(CFLAGS) $(INC) $(LIBS) src/*.c $@.c -o $@
 
-genapdu: genapdu.c src/apdu.c
+genapdu: genapdu.c src/apdu.c src/moc.c
 	$(CC) $(CFLAGS) $(INC) src/*.c $@.c -o $@
 
 run:
