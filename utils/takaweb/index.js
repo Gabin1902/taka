@@ -175,7 +175,7 @@ const listen = async () => {
   } else if (_cmd == USB_CMD_GETUNIQUEID) {
     takaUniqueIDSet(result.data.buffer);
   } else if (_cmd == USB_CMD_GETARCH) {
-    archContentAppend(_fnum, content);
+    archContentAppend(_fnum, result.data);
     if (last) {
       if (_fnum + 1 < 4) {
         getArch(_fnum + 1); /* Queue the read for the next ARCH container */
@@ -272,7 +272,9 @@ function archContentDrop() {
   archContent3.innerText = "";
 };
 
-function archContentAppend(num, message) {
+function archContentAppend(num, data) {
+  var message = arch_as_text(new Uint8Array(data.buffer));
+
   if (num == 0) {
     archContent0.innerText += message;
   } else if (num == 1) {
