@@ -59,6 +59,14 @@ dfu-util -d 0483:df11 -a 0 -D nuttx.bin --dfuse-address 0x08000000
 Hardware Changelog
 ==================
 
+R06
+---
+
+* Replace 3V3 and 5V regulators with available parts
+* SAM not mounted
+* NFC not mounted
+* Increment GPIO revision straps: REV_[2:0] == '111' (PJ9/PK0/PK1)
+
 R05
 ---
 
@@ -74,6 +82,11 @@ R05
 
 Changelog
 =========
+
+taka.1.00
+---------
+
+* Support for Dermalog ARCH & MOC
 
 taka.0.98
 ---------
