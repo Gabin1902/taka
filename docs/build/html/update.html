@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Mise à jour &mdash; LambdaConcept Taka  documentation</title>
@@ -180,10 +179,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="mise-a-jour">
+  <div class="section" id="mise-a-jour">
 <h1>Mise à jour<a class="headerlink" href="#mise-a-jour" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<section id="mode-dfu">
+<div class="section" id="mode-dfu">
 <span id="refmodedfu"></span><h2>Mode DFU<a class="headerlink" href="#mode-dfu" title="Permalink to this headline">¶</a></h2>
 <p>Le lecteur Taka peut être mis à jour via USB. Prérequis:</p>
 <ul class="simple">
@@ -195,12 +194,12 @@ ou autre objet pointu, tout en démarrant Taka en actionnant l’interrupteur
 On/Off.</p>
 <p>Le bouton DFU est situé sur le coté gauche du boitier:</p>
 <img alt="_images/dfu.png" src="_images/dfu.png" />
-</section>
+</div>
 <hr class="docutils" />
-<section id="webdfu">
+<div class="section" id="webdfu">
 <h2>WebDFU<a class="headerlink" href="#webdfu" title="Permalink to this headline">¶</a></h2>
 <p>Une application web est fournie, utilisable depuis un navigateur Web (Chrome).</p>
-<section id="installation">
+<div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <p>Voir le README <a class="reference external" href="https://github.com/lambdaconcept/taka/tree/master/utils/takadfu">https://github.com/lambdaconcept/taka/tree/master/utils/takadfu</a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(Linux) Install Udev rules
@@ -234,14 +233,14 @@ In a Web browser (Chrome), connect to:
 http://127.0.0.1:8000/
 </pre></div>
 </div>
-</section>
-<section id="connection">
+</div>
+<div class="section" id="connection">
 <h3>Connection<a class="headerlink" href="#connection" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/connect2.png"><img alt="_images/connect2.png" src="_images/connect2.png" style="width: 600px;" /></a>
 <p>Si le périphérique USB DFU n’apparait pas dans la liste, vérifiez que Taka
 est bien démarré en <a class="reference internal" href="#refmodedfu"><span class="std std-ref">Mode DFU</span></a>.</p>
-</section>
-<section id="selection-du-firmware">
+</div>
+<div class="section" id="selection-du-firmware">
 <h3>Selection du firmware<a class="headerlink" href="#selection-du-firmware" title="Permalink to this headline">¶</a></h3>
 <p>Les firmwares précompilés sont déja inclus dans l’application web,
 il suffit de sélectionner la version voulue dans la liste déroulante et
@@ -249,10 +248,10 @@ de cliquer sur le bouton “Flash!”.</p>
 <a class="reference internal image-reference" href="_images/select.png"><img alt="_images/select.png" src="_images/select.png" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="_images/flash.png"><img alt="_images/flash.png" src="_images/flash.png" style="width: 600px;" /></a>
 <p>La mise à jour est terminée.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="dfu-util">
+<div class="section" id="dfu-util">
 <h2>DFU-Util<a class="headerlink" href="#dfu-util" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -264,8 +263,8 @@ mise à jour en ligne de commande plutôt que par l’application web</p>
 dfu-util -d 0483:df11 -a 0 -D taka.bin --dfuse-address 0x08000000
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

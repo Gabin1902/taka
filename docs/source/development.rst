@@ -117,7 +117,17 @@ Pour trouver l'IP de Taka:
 
     $ telnet 192.168.0.2
 
-    NuttShell (NSH) NuttX-9.0.0
+    Trying 192.168.0.57...
+    Connected to 192.168.0.57.
+    Escape character is '^]'.
+
+    Welcome to NuttShell(NSH) Telnet Server...
+    login: taka
+    password: takatelnet
+
+    User Logged-in!
+
+    NuttShell (NSH) NuttX-10.2.0
     nsh> ps
       PID PRI POLICY   TYPE    NPX STATE    EVENT     SIGMASK   STACK COMMAND
         0   0 FIFO     Kthread N-- Ready              00000000 000000 Idle Task

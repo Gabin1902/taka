@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>API &mdash; LambdaConcept Taka  documentation</title>
@@ -192,23 +191,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="api">
+  <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<section id="usb">
+<div class="section" id="usb">
 <h2>USB<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h2>
 <p>Le connecteur USB situé à l’arrière du boitier Taka permet une connexion
 à un PC.</p>
 <img alt="_images/usb.png" src="_images/usb.png" />
-</section>
+</div>
 <hr class="docutils" />
-<section id="exemple-webusb">
+<div class="section" id="exemple-webusb">
 <h2>Exemple WebUSB<a class="headerlink" href="#exemple-webusb" title="Permalink to this headline">¶</a></h2>
 <p>Un exemple d’utilisation de cette API est fournie dans une application
 WebUSB utilisable depuis un navigateur Web (Chrome).
 Cette application implémente l’ensemble des fonctionnalités fournies
 par l’API et peut donc servir de référence.</p>
-<section id="installation">
+<div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <p>Voir le README <a class="reference external" href="https://github.com/lambdaconcept/taka/tree/master/utils/takaweb">https://github.com/lambdaconcept/taka/tree/master/utils/takaweb</a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(Linux) Install Udev rules
@@ -242,32 +241,32 @@ In a Web browser (Chrome), connect to:
 http://127.0.0.1:8000/
 </pre></div>
 </div>
-</section>
-<section id="connection">
+</div>
+<div class="section" id="connection">
 <h3>Connection<a class="headerlink" href="#connection" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="_images/connect.png"><img alt="_images/connect.png" src="_images/connect.png" style="width: 600px;" /></a>
-</section>
-<section id="lecture-des-fichiers-arch">
+</div>
+<div class="section" id="lecture-des-fichiers-arch">
 <h3>Lecture des fichiers ARCH<a class="headerlink" href="#lecture-des-fichiers-arch" title="Permalink to this headline">¶</a></h3>
 <p>Lorsqu’une carte d’identité provisionnée avec l’application ARCH est insérée
 dans le boitier Taka, le contenu des fichiers ARCH peut être lu via l’API:</p>
 <a class="reference internal image-reference" href="_images/arch.png"><img alt="_images/arch.png" src="_images/arch.png" style="width: 600px;" /></a>
-</section>
-<section id="lecture-des-fichiers-icao">
+</div>
+<div class="section" id="lecture-des-fichiers-icao">
 <h3>Lecture des fichiers ICAO<a class="headerlink" href="#lecture-des-fichiers-icao" title="Permalink to this headline">¶</a></h3>
 <p>Lorsqu’une carte d’identité provisionnée avec l’application ICAO (eTravel)
 est insérée dans le boitier Taka, le contenu des fichiers ICAO DG1 à DG16
 peut être lu via l’API:</p>
 <a class="reference internal image-reference" href="_images/icao.png"><img alt="_images/icao.png" src="_images/icao.png" style="width: 600px;" /></a>
-</section>
-<section id="lecture-des-journaux">
+</div>
+<div class="section" id="lecture-des-journaux">
 <h3>Lecture des journaux<a class="headerlink" href="#lecture-des-journaux" title="Permalink to this headline">¶</a></h3>
 <p>A tout moment le contenu des logs stockés dans le boitier Taka (sur carte SD)
 peut être lu via l’API. La requête doit préciser la date voulue (1 jour à
 la fois). Voir la section <a class="reference internal" href="logs.html"><span class="doc">Journaux</span></a> pour le descriptif du format journal.</p>
 <a class="reference internal image-reference" href="_images/logs.png"><img alt="_images/logs.png" src="_images/logs.png" style="width: 600px;" /></a>
-</section>
-<section id="lecture-d-empreinte">
+</div>
+<div class="section" id="lecture-d-empreinte">
 <h3>Lecture d’empreinte<a class="headerlink" href="#lecture-d-empreinte" title="Permalink to this headline">¶</a></h3>
 <p>L’empreinte digitale capturée par la caméra optique est accessible
 par l’API. Seule la dernière image capturée est disponible, une nouvelle
@@ -280,10 +279,10 @@ tentative écrasant l’image précédente.</p>
 </ul>
 <a class="reference internal image-reference" href="_images/frame.png"><img alt="_images/frame.png" src="_images/frame.png" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="_images/minutiaes.png"><img alt="_images/minutiaes.png" src="_images/minutiaes.png" style="width: 600px;" /></a>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="details-du-protocole-api-usb">
+<div class="section" id="details-du-protocole-api-usb">
 <h2>Détails du protocole API USB<a class="headerlink" href="#details-du-protocole-api-usb" title="Permalink to this headline">¶</a></h2>
 <p>Le protocole est implémenté sous la forme de commandes/réponses.
 Les commandes sont toujours émises par le host (PC), auxquelles le device
@@ -339,7 +338,7 @@ préalable par une commande reçue du host.</p>
 </tr>
 </tbody>
 </table>
-<section id="get-version">
+<div class="section" id="get-version">
 <h3>Get Version<a class="headerlink" href="#get-version" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -349,8 +348,8 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> La version sous forme de chaine de caractères (NULL terminated). Exemple: “v.0.96”</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="get-arch">
+</div>
+<div class="section" id="get-arch">
 <h3>Get ARCH<a class="headerlink" href="#get-arch" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -360,8 +359,8 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> Renvoie le contenu du fichier ARCH demandé</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="get-icao">
+</div>
+<div class="section" id="get-icao">
 <h3>Get ICAO<a class="headerlink" href="#get-icao" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -371,8 +370,8 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> Renvoie le contenu du fichier ICAO demandé</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="get-logs">
+</div>
+<div class="section" id="get-logs">
 <h3>Get Logs<a class="headerlink" href="#get-logs" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -382,8 +381,8 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> Le contenu du fichier journal pour le jour demandé. Voir la section <a class="reference internal" href="logs.html"><span class="doc">Journaux</span></a> pour le descriptif du format journal.</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="get-frame-raw">
+</div>
+<div class="section" id="get-frame-raw">
 <h3>Get Frame Raw<a class="headerlink" href="#get-frame-raw" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -393,8 +392,8 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> L’image au format binaire (framebuffer 8bit grayscale, 640x380 px)</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="get-frame-morph">
+</div>
+<div class="section" id="get-frame-morph">
 <h3>Get Frame Morph<a class="headerlink" href="#get-frame-morph" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -404,8 +403,8 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> L’image au format binaire (framebuffer 8bit grayscale, 314x322 px)</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="get-minutiaes">
+</div>
+<div class="section" id="get-minutiaes">
 <h3>Get Minutiaes<a class="headerlink" href="#get-minutiaes" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -415,9 +414,9 @@ préalable par une commande reçue du host.</p>
 <li><p><strong>Réponse:</strong> Renvoie les minutiaes au format ISO/IEC 19794-2:2005 (Record Format, FMR)</p></li>
 </ul>
 </div></blockquote>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

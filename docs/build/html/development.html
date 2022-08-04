@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Développement &mdash; LambdaConcept Taka  documentation</title>
@@ -180,11 +179,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="developpement">
+  <div class="section" id="developpement">
 <h1>Développement<a class="headerlink" href="#developpement" title="Permalink to this headline">¶</a></h1>
 <p>Le firmware de Taka est basé sur le système d’exploitation temps réel
 NuttX.</p>
-<section id="console-de-debug">
+<div class="section" id="console-de-debug">
 <h2>Console de debug<a class="headerlink" href="#console-de-debug" title="Permalink to this headline">¶</a></h2>
 <p>La console de debug de Taka est accessible par le connecteur 3 pins CN12
 situé sur la carte mère. Il faut y connecter un câble de type debug UART.
@@ -211,7 +210,7 @@ situé sur la carte mère. Il faut y connecter un câble de type debug UART.
 <li><p>GND &lt;–&gt; Taka GND</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/serial.jpg"><img alt="_images/serial.jpg" src="_images/serial.jpg" style="width: 256px;" /></a>
-<section id="minicom">
+<div class="section" id="minicom">
 <h3>Minicom<a class="headerlink" href="#minicom" title="Permalink to this headline">¶</a></h3>
 <p>Côté PC, le câble de debug UART est vu en tant que périphérique TTY USB.
 Si les fils ont été branchés sur le canal TX0/RX0, le périphérique
@@ -267,9 +266,9 @@ NuttShell (NSH) NuttX-9.0.0
 nsh&gt;
 </pre></div>
 </div>
-</section>
-</section>
-<section id="telnet">
+</div>
+</div>
+<div class="section" id="telnet">
 <h2>Telnet<a class="headerlink" href="#telnet" title="Permalink to this headline">¶</a></h2>
 <p>Le prompt NuttX est aussi accessible en Telnet (Pas besoin de câble de debug
 mais plus complexe).</p>
@@ -285,7 +284,17 @@ mais plus complexe).</p>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ telnet 192.168.0.2
 
-NuttShell (NSH) NuttX-9.0.0
+Trying 192.168.0.57...
+Connected to 192.168.0.57.
+Escape character is &#39;^]&#39;.
+
+Welcome to NuttShell(NSH) Telnet Server...
+login: taka
+password: takatelnet
+
+User Logged-in!
+
+NuttShell (NSH) NuttX-10.2.0
 nsh&gt; ps
   PID PRI POLICY   TYPE    NPX STATE    EVENT     SIGMASK   STACK COMMAND
     0   0 FIFO     Kthread N-- Ready              00000000 000000 Idle Task
@@ -305,14 +314,14 @@ il faut la terminer et la relancer manuellement:</p>
 nsh&gt; taka
 </pre></div>
 </div>
-</section>
-<section id="compilation">
+</div>
+<div class="section" id="compilation">
 <h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
 <p>Voir les explications ici: <a class="reference external" href="https://github.com/lambdaconcept/taka">https://github.com/lambdaconcept/taka</a></p>
 <p>Une fois le firmware compilé, programmer Taka avec le nouveau binaire
 comme expliqué dans la section <a class="reference internal" href="update.html"><span class="doc">Mise à jour</span></a>.</p>
-</section>
-<section id="architecture-nuttx">
+</div>
+<div class="section" id="architecture-nuttx">
 <h2>Architecture NuttX<a class="headerlink" href="#architecture-nuttx" title="Permalink to this headline">¶</a></h2>
 <p>NuttX est contenu dans 2 dossiers:</p>
 <blockquote>
@@ -388,8 +397,8 @@ taka.h              &lt;--- Gestion des erreurs système
 libnfc/
 </pre></div>
 </div>
-</section>
-<section id="defines">
+</div>
+<div class="section" id="defines">
 <h2>Defines<a class="headerlink" href="#defines" title="Permalink to this headline">¶</a></h2>
 <p><strong>Version de Taka:</strong></p>
 <blockquote>
@@ -413,8 +422,8 @@ d’informations sur la console en cas dysfonctionnement, par exemple:</p>
 <li><p><a class="reference external" href="https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.h#L9">https://github.com/lambdaconcept/taka-apps/blob/master/examples/taka/icao.h#L9</a></p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="changement-des-apdu">
+</div>
+<div class="section" id="changement-des-apdu">
 <h2>Changement des APDU<a class="headerlink" href="#changement-des-apdu" title="Permalink to this headline">¶</a></h2>
 <p><strong>Adaptation des APDU ARCH pour supporter differentes cartes:</strong></p>
 <blockquote>
@@ -465,8 +474,8 @@ d’informations sur la console en cas dysfonctionnement, par exemple:</p>
 </li>
 </ol>
 <p>Pas de changement c’est une commande standard “READ BINARY”.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
