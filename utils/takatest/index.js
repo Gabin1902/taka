@@ -65,6 +65,7 @@ connectButton.onclick = async () => {
   navigator.usb.ondisconnect = reset;
 
   await _device.open();
+  await _device.reset();
   await _device.selectConfiguration(1);
   await _device.claimInterface(0);
 
