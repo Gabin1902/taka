@@ -83,6 +83,11 @@ R05
 Changelog
 =========
 
+taka.1.01
+---------
+
+* Extension de la date de validité des cartes dont start_date <= 01/01/2021
+
 taka.1.00
 ---------
 
